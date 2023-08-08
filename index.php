@@ -30,9 +30,7 @@ $name = $date = $description = $max = "";
 $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/events.json';
 if (file_exists($filename)) {
     $message = "Event Page Exists";
-} else {
-    $events = fopen($filename, 'w');
-}
+} else $events = fopen($filename, 'w');
 
 if (isset($_POST["name"])) {
     if ($_POST["name"] > 0) {
@@ -51,16 +49,18 @@ if (isset($_POST["name"])) {
     $safeEvent = $oldEvent;
 
 
-    $encoded_data = json_encode($safeEvent, JSON_PRETTY_PRINT);
+    $encoded_data = json_encode($safeEvent, JSON_PRETTY_PRINT, 512);
     file_put_contents("events.json", $encoded_data);
 
+    $decodedData = json_decode($encoded_data, null, 512, 0);
 
-echo implode("<br>", $encoded_data);
+    foreach ($decodedData as $event) {
+        foreach ($event as $daten) {
+            echo $daten . "<br />";
+        }
+    }
 
-
-//var_dump($encoded_data);
-//    var_dump(json_decode($encoded_data, true));
-
+//    print("<pre>" . print_r($decodedData, true) . "</pre>");
 }
 ?>
 
