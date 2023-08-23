@@ -30,15 +30,16 @@
     <label> Maximale Anzahl Personen:
         <input type="number" name="max" value="<?php echo $_POST['max'] ?? ''; ?>" min="1">
         <?php if (isset($_POST['max']) && (!is_numeric($_POST['max']) || $_POST['max'] < 0)) {
-            echo '<span style="color:#ff4500"> Error: "Maximale Anzahl von Personen" darf nicht negativ sein! </span>';
+            echo '<span style="color:#ff4500"> Error: Maximale Anzahl von Personen muss mindestens 1 sein! </span>';
         } ?>
     </label><br><br>
 
 
     <label> Submit:
-        <input type="submit" value="Submit"><br><br>
+        <input type="submit" name="submit" value="Submit"><br><br>
     </label>
+
+
 </form>
 
 </body>
-</html>
