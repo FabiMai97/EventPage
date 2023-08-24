@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 <?php
 
 ini_set('display_errors', '1');
@@ -97,10 +90,5 @@ foreach ($old as $registration) {
 
     echo "Der Zeit angemeldet: " . $registration['isMax'] . " / " . $registration['max'] . "<br>" . "<br>";
 }
-
-?>
-
-</body>
-</html>
 
 
