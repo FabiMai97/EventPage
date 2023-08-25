@@ -4,7 +4,7 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-include 'form.html';
+require 'form.html';
 
 $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/events.json';
 if (!file_exists($filename)) {
@@ -34,7 +34,6 @@ if (isset($_POST['submit'])) {
     if (!is_numeric($_POST['max']) || $_POST['max'] < 0) {
         $error['max'] = "";
     }
-
     if (empty($error)) {
         $file = file_get_contents("events.json");
         $oldEvent = json_decode($file, true, 521);
@@ -49,7 +48,6 @@ $old = json_decode(file_get_contents("events.json"), true);
 echo '<h2> Festival Liste: </h2>';
 
 foreach ($old as $dol) {
-
     echo "Name: " . $dol['name'] . "<br>";
     echo "Datum: " . $lod = date("d.m.y", strtotime($dol['date'])) . "<br>";
     echo "Beschreibung: " . $dol['description'] . "<br>";

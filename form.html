@@ -5,35 +5,31 @@
     <label> Name:
         <input type="text" name="name" value="<?php echo $_POST['name'] ?? ''; ?>">
         <?php if (isset($_POST['name']) && (strlen($_POST['name'])) <= 3) {
-            echo '<span style="color:#ff4500"> Error: Der Eventname muss mehr als 3 Zeichen haben! </span>';
+            echo '<span style="color:#ff4500"> Error: Der Eventname muss mehr als 3 Zeichen haben! ';
         } ?>
     </label><br><br>
-
 
     <label> Datum:
         <input type="date" name="date" value="<?php echo $_POST['date'] ?? ''; ?>">
         <?php if (isset($_POST['date']) && (strtotime($_POST['date'])) < time()) {
-            echo '<span style="color:#ff4500"> Error: Das Datum muss in der Zukunft liegen! </span>';
+            echo '<span style="color:#ff4500"> Error: Das Datum muss in der Zukunft liegen! ';
         } ?>
     </label><br><br>
-
 
     <label>Beschreibung:
         <textarea type="text" name="description" rows="5"
                   cols="50"><?php echo $_POST['description'] ?? ''; ?></textarea>
         <?php if (isset($_POST['description']) && (strlen($_POST['description'])) <= 5) {
-            echo '<span style="color:#ff4500"> Error: Die Eventbeschreibung muss mehr als 5 Zeichen haben! </span>';
+            echo '<span style="color:#ff4500"> Error: Die Eventbeschreibung muss mehr als 5 Zeichen haben! ';
         } ?>
     </label><br><br>
-
 
     <label> Maximale Anzahl Personen:
         <input type="number" name="max" value="<?php echo $_POST['max'] ?? ''; ?>" min="1">
         <?php if (isset($_POST['max']) && (!is_numeric($_POST['max']) || $_POST['max'] < 0)) {
-            echo '<span style="color:#ff4500"> Error: Maximale Anzahl von Personen muss mindestens 1 sein! </span>';
+            echo '<span style="color:#ff4500"> Error: Maximale Anzahl von Personen muss mindestens 1 sein! ';
         } ?>
     </label><br><br>
-
 
     <label> Submit:
         <input type="submit" name="submit" value="Submit"><br><br>

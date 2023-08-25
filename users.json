@@ -1,0 +1,22 @@
+[
+  {
+    "userName": "nico",
+    "email": "nico@nico.de",
+    "password": "$2y$10$i9g5QyfL1IS3JBrBxQz33e36Ys\/T1zkZo293IqiPiec.Uj2Cmz5ta"
+  },
+  {
+    "userName": "Simon",
+    "email": "simon@simon.de",
+    "password": "$2y$10$8I9rtYiiAxcuqLXPdxbGGuSIYeB6fdVYFocrDsEYv\/xTqcl7ulStO"
+  },
+  {
+    "userName": "fabian",
+    "email": "fabian@fabian.de",
+    "password": "$2y$10$d7Hu3vI4LAGfHl7LDXJhp.tQsx\/BYyMxcw4qk9WIgrUrnu7nldFc6"
+  },
+  {
+    "userName": "maike",
+    "email": "maike@maike.de",
+    "password": "$2y$10$V0OMqusH\/WB.sbCWartkUeB3LD4MvO\/EVBGV0sP6qndmy30t3jbHC"
+  }
+]

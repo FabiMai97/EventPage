@@ -1,0 +1,11 @@
+$latte = new Latte\Engine;
+// cache directory
+$latte->setTempDirectory('/path/to/tempdir');
+
+$params = [ /* template variables */ ];
+// or $params = new TemplateParameters(/* ... */);
+
+// render to output
+$latte->render('template.latte', $params);
+// or render to variable
+$output = $latte->renderToString('template.latte', $params);
