@@ -1,3 +1,5 @@
+<?php
+
 $latte = new Latte\Engine;
 // cache directory
 $latte->setTempDirectory('/path/to/tempdir');
