@@ -1,0 +1,70 @@
+{block content}
+    <form action="/index.php" method="post">
+        <div>
+            <label> Name:
+                <input type="text" name="name"
+                       value="{if isset($name)}{$name}{/if}">
+                {if}<span
+                        style="color:#ff4500"> Error: Der Eventname muss mehr als 3 Zeichen haben!{/if isset($error['name'])}
+            </label>
+        </div>
+        <div>
+            <label> Datum:
+                <input type="date" name="date"
+                       value="{if isset($date)}{$date}{/if}">
+                {if}<span
+                        style="color:#ff4500"> Error: Das Datum muss in der Zukunft liegen!{/if isset($error['date'])}
+            </label>
+        </div>
+        <div>
+            <label>Beschreibung:
+                <textarea type="text" name="description" rows="5"
+                          cols="50">{if isset($description)}{$description}{/if}</textarea>
+                {if}<span
+                        style="color:#ff4500"> Error: Die Eventbeschreibung muss mehr als 5 Zeichen haben!{/if isset($error['description'])}
+            </label>
+        </div>
+        <div>
+            <label> Maximale Anzahl Personen:
+                <input type="number" name="max"
+                       value="{if isset($max)}{$max}{/if}">
+                {if}<span
+                        style="color:#ff4500"> Error: Maximale Anzahl von Personen muss mindestens 1 sein!{/if isset($error['max'])}
+            </label>
+        </div>
+        <div>
+            <label> Submit:
+                <input type="submit" name="submit" value="Submit"><br><br>
+            </label>
+        </div>
+    </form>
+
+    <h2>Festival Liste:</h2>
+
+    {foreach $old as $dol}
+        <span>
+            Name: {$dol['name']} <br>
+            Datum: {$dol['date']} <br>
+            Beschreibung: {$dol ['description']} <br>
+            Maximale Anzahl: {$dol['max']} <br><br>
+        </span>
+    {/foreach}
+    <h2> Anmeldung</h2>
+
+    {foreach $old as $registration}
+        <span> {$registration['name']}</span>
+
+        {if $registration['isMax'] < $registration['max']}
+            <form action="/index.php" method="POST">
+                <input type="submit" name="binDabei_{$registration['id']}" value="Bin Dabei!"></form>
+        {/if}
+        <span> Der Zeit angemeldet: {$registration['isMax']} / {$registration['max']}<br><br></span>
+    {/foreach}
+{/block}
+
+
+
+
+
+
+{*keine globale varaible in template nutzen*}

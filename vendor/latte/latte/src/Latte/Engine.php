@@ -19,8 +19,8 @@ class Engine
 {
 	use Strict;
 
-	public const VERSION = '3.0.7';
-	public const VERSION_ID = 30007;
+	public const VERSION = '3.0.8';
+	public const VERSION_ID = 30008;
 
 	/** @deprecated use ContentType::* */
 	public const
@@ -42,6 +42,7 @@ class Engine
 	private ?string $tempDirectory = null;
 	private bool $autoRefresh = true;
 	private bool $strictTypes = false;
+	private bool $strictParsing = false;
 	private ?Policy $policy = null;
 	private bool $sandboxed = false;
 	private ?string $phpBinary = null;
@@ -142,6 +143,7 @@ class Engine
 	{
 		$lexer = new Compiler\TemplateLexer;
 		$parser = new Compiler\TemplateParser;
+		$parser->strict = $this->strictParsing;
 
 		foreach ($this->extensions as $extension) {
 			$extension->beforeCompile($this);
@@ -178,12 +180,12 @@ class Engine
 	 */
 	public function generate(TemplateNode $node, string $name): string
 	{
-		$comment = preg_match('#\n|\?#', $name) ? null : "source: $name";
+		$sourceName = preg_match('#\n|\?#', $name) ? null : $name;
 		$generator = new Compiler\TemplateGenerator;
 		return $generator->generate(
 			$node,
 			$this->getTemplateClass($name),
-			$comment,
+			$sourceName,
 			$this->strictTypes,
 		);
 	}
@@ -532,6 +534,19 @@ class Engine
 	}
 
 
+	public function setStrictParsing(bool $on = true): static
+	{
+		$this->strictParsing = $on;
+		return $this;
+	}
+
+
+	public function isStrictParsing(): bool
+	{
+		return $this->strictParsing;
+	}
+
+
 	public function setLoader(Loader $loader): static
 	{
 		$this->loader = $loader;
@@ -549,7 +564,7 @@ class Engine
 	}
 
 
-	public function enablePhpLinter(string $phpBinary): static
+	public function enablePhpLinter(?string $phpBinary): static
 	{
 		$this->phpBinary = $phpBinary;
 		return $this;

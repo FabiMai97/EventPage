@@ -1,0 +1,35 @@
+{block content}
+    <form action="/user.php" method="post">
+        <div>
+            <label> Name:
+                <input type="text" name="userName"
+                       value="{if isset($userName)}{$userName}{/if}">
+                {if}<span
+                        style="color:#ff4500"> User Name to short! {/if isset($error['userName'])}
+            </label>
+        </div>
+        <div>
+            <label> E-Mail:
+                <input type="email" name="email"
+                       value="{if isset($email)}{$email}{/if}">
+                {if}<span
+                        style="color:#ff4500"> Mail is already in use! {/if isset($error['email'])}
+            </label>
+        </div>
+        <div>
+            <label>Passwort:
+                <input type="password" name="password" minlength="4">
+                {if}<span
+                        style="color:#ff4500"> Password to short! {/if isset($error['password'])}
+            </label>
+        </div>
+        <div>
+            <label>Registrierung:
+                <input type="submit" name="register" value="Registrierung">
+            </label>
+        </div>
+    </form>
+{/block}
+
+
+{*keine globale varaible in template nutzen*}

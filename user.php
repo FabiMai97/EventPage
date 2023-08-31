@@ -1,18 +1,24 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+$latte = new Latte\Engine;
+$latte->setTempDirectory(__DIR__ . '/temp');
+$latte->setautoRefresh();
+
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-require 'registrationForm.html';
+$filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/users.json';
 
-$filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/users.json';
 if (!file_exists($filename)) {
     file_put_contents($filename, json_encode([]));
 }
+$error = [];
+$newUser = [];
+$liste = array_column(json_decode(file_get_contents("json/users.json"), true), 'email', 'userName');
 
-$user = json_decode(file_get_contents("users.json"), true);
-$liste = array_column($user, 'email', 'userName');
 if (isset($_POST['register'])) {
     foreach ($liste as $list) {
         if ($list === $_POST['email']) {
@@ -21,12 +27,12 @@ if (isset($_POST['register'])) {
         }
     }
     if (isset($_POST['register'])) {
-        $newUser = array(
+        $newUser = [
             "userName" => $_POST['userName'],
             "email" => $_POST['email'],
-            "password" => password_hash($_POST['password'], PASSWORD_DEFAULT)
-        );
-        $error = [];
+            "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        ];
+
         $email = $_POST['email'];
 
         if (strlen($_POST['userName']) <= 3) {
@@ -40,13 +46,20 @@ if (isset($_POST['register'])) {
         }
 
         if (empty($error)) {
-            $oldUser = json_decode(file_get_contents("users.json"), true);
+            $oldUser = json_decode(file_get_contents("json/users.json"), true);
             $oldUser[] = $newUser;
-            file_put_contents("users.json", json_encode($oldUser, JSON_PRETTY_PRINT));
-        } else {
-            echo "<br>" . '<span style="color:#ff4500"> Mail is already used!';
+            file_put_contents("json/users.json", json_encode($oldUser, JSON_PRETTY_PRINT));
         }
-
     }
 }
+$userName = $_POST['userName'];
+$email = $_POST['email'];
+
+$latte->render(__DIR__ . '/templates/user.latte', [
+    'error' => $error,
+    'userName' => $userName,
+    'email' => $email,
+]);
+
+
 

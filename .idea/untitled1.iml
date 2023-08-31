@@ -4,6 +4,14 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/latte/latte" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/nette/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/nette/tester" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/phpstan/phpstan" />
+      <excludeFolder url="file://$MODULE_DIR$/tools/vendor/tracy/tracy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nette/utils" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

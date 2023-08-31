@@ -1,0 +1,12 @@
+[
+    {
+        "userName": "nico",
+        "email": "nico@nico.de",
+        "password": "$2y$10$i9g5QyfL1IS3JBrBxQz33e36Ys\/T1zkZo293IqiPiec.Uj2Cmz5ta"
+    },
+    {
+        "userName": "fabian",
+        "email": "fabian@fabian.de",
+        "password": "$2y$10$Hl\/xNO14NTKwj0D1r9E2iOmo9ZIK5cDugYbmzPS63jxogBfXVJCdS"
+    }
+]

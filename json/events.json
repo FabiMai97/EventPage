@@ -1,0 +1,26 @@
+[
+    {
+        "id": "F64f0849907dca",
+        "name": "Parooka",
+        "date": "2023-09-06",
+        "description": "lkjhgfd",
+        "max": "6",
+        "isMax": 6
+    },
+    {
+        "id": "F64f0855c71a69",
+        "name": "Sommerfest",
+        "date": "2023-09-06",
+        "description": "kjhgfdsa",
+        "max": "8000",
+        "isMax": 30
+    },
+    {
+        "id": "F64f08dcb684a6",
+        "name": "Sommerfest",
+        "date": "2023-09-08",
+        "description": "asdfghjkl",
+        "max": "3",
+        "isMax": 0
+    }
+]
