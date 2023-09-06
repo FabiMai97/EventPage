@@ -1,0 +1,21 @@
+{block content}
+    {if isset($error)}{$error}{/if}
+    <form action="/login.php" method="post">
+        <div>
+            <label> E-Mail:
+                <input type="email" name="loginMail" value="{if isset($email)}{$email}{/if}">
+            </label>
+        </div>
+        <div>
+            <label> Passwort:
+                <input type="password" name="loginPassword">
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="submit" name="loginSubmit" value="Log In">
+            </label>
+        </div>
+    </form>
+
+{/block}

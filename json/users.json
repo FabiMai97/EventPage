@@ -1,12 +1,12 @@
 [
-    {
-        "userName": "nico",
-        "email": "nico@nico.de",
-        "password": "$2y$10$i9g5QyfL1IS3JBrBxQz33e36Ys\/T1zkZo293IqiPiec.Uj2Cmz5ta"
-    },
-    {
-        "userName": "fabian",
-        "email": "fabian@fabian.de",
-        "password": "$2y$10$Hl\/xNO14NTKwj0D1r9E2iOmo9ZIK5cDugYbmzPS63jxogBfXVJCdS"
-    }
+  {
+    "userName": "Nico",
+    "email": "nico@nico.de",
+    "password": "$2y$10$XI0A72.yv6GHfEzsUaabMOB2BFuoElE\/mtesFgZ6xwG8EC5UBvQcO"
+  },
+  {
+    "userName": "Fabi",
+    "email": "fabi@fabi.de",
+    "password": "$2y$10$ERUz8xL89SamaRmVfV5NsuGV78InWUazQzZAk7vuvYzz8Zg4GCuDK"
+  }
 ]

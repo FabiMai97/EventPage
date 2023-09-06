@@ -3,7 +3,7 @@
         'name' => 'latte/event-page',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'c7abd0e095ed2fb63573d2a122db34a3f3656b88',
+        'reference' => '864e31b6da7e691a156070c9181e7f9df99a9e61',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'latte/event-page' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c7abd0e095ed2fb63573d2a122db34a3f3656b88',
+            'reference' => '864e31b6da7e691a156070c9181e7f9df99a9e61',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

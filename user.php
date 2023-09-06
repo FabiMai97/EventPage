@@ -10,6 +10,8 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+session_start();
+
 $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/users.json';
 
 if (!file_exists($filename)) {
@@ -17,6 +19,7 @@ if (!file_exists($filename)) {
 }
 $error = [];
 $newUser = [];
+$userName = $email = "";
 $liste = array_column(json_decode(file_get_contents("json/users.json"), true), 'email', 'userName');
 
 if (isset($_POST['register'])) {
@@ -52,9 +55,10 @@ if (isset($_POST['register'])) {
         }
     }
 }
-$userName = $_POST['userName'];
-$email = $_POST['email'];
-
+if (isset($_POST['register'])) {
+    $userName = $_POST['userName'];
+    $email = $_POST['email'];
+}
 $latte->render(__DIR__ . '/templates/user.latte', [
     'error' => $error,
     'userName' => $userName,

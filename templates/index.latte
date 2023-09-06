@@ -1,4 +1,18 @@
 {block content}
+    {if isset($userName)}
+        <label> Wilkommen {$userName}</label>
+        <form action="/index.php" method="post">
+            <div>
+                <input type="submit" name="logout" value="Abmelden">
+            </div>
+        </form>
+    {else}
+        <a href="http://localhost:8000/login.php">
+            <button> Anmeldung</button>
+            <br><br>
+        </a>
+    {/if}
+
     <form action="/index.php" method="post">
         <div>
             <label> Name:
@@ -33,7 +47,7 @@
             </label>
         </div>
         <div>
-            <label> Submit:
+            <label>
                 <input type="submit" name="submit" value="Submit"><br><br>
             </label>
         </div>
@@ -52,7 +66,7 @@
     <h2> Anmeldung</h2>
 
     {foreach $old as $registration}
-        <span> {$registration['name']}</span>
+        <h4> {$registration['name']}</h4>
 
         {if $registration['isMax'] < $registration['max']}
             <form action="/index.php" method="POST">
@@ -61,10 +75,3 @@
         <span> Der Zeit angemeldet: {$registration['isMax']} / {$registration['max']}<br><br></span>
     {/foreach}
 {/block}
-
-
-
-
-
-
-{*keine globale varaible in template nutzen*}

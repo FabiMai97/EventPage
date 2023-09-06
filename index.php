@@ -11,6 +11,8 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+session_start();
+
 $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/events.json';
 if (!file_exists($filename)) {
     file_put_contents($filename, json_encode([]));
@@ -18,6 +20,8 @@ if (!file_exists($filename)) {
 
 $error = [];
 $newEvent = [];
+$name = $date = $description = $max = $userName = "";
+
 
 if (isset($_POST['submit'])) {
     $newEvent = [
@@ -53,7 +57,6 @@ if (isset($_POST['submit'])) {
 $old = json_decode(file_get_contents("json/events.json"), true);
 
 
-
 foreach ($old as $registration) {
 
     $bName = 'binDabei' . '_' . $registration['id'];
@@ -66,7 +69,6 @@ foreach ($old as $registration) {
         foreach ($addition as $key => $participant) {
             if ($participant['id'] === $targetId) {
                 $addition[$key]['isMax'] = $newValue;
-
             }
         }
         file_put_contents("json/events.json", json_encode($addition, JSON_PRETTY_PRINT));
@@ -74,10 +76,18 @@ foreach ($old as $registration) {
     }
 }
 
-$name =  $_POST['name'];
-$date = $_POST['date'];
-$description = $_POST['description'];
-$max = $_POST['max'];
+$name = $_POST['name'] ?? NULL;
+$date = $_POST['date'] ?? NULL;
+$description = $_POST['description'] ?? NULL;
+$max = $_POST['max'] ?? NULL;
+
+
+$userName = $_SESSION["username"] ?? NULL;
+
+if (isset($_POST['logout'])) {
+    unset($_SESSION["username"]);
+    header("location: /index.php");
+}
 
 $latte->render(__DIR__ . '/templates/index.latte', [
     'old' => $old,
@@ -87,6 +97,7 @@ $latte->render(__DIR__ . '/templates/index.latte', [
     'date' => $date,
     'description' => $description,
     'max' => $max,
+    'userName' => $userName,
 ]);
 
 
