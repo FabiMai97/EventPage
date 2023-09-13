@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -6,98 +6,25 @@ $latte = new Latte\Engine;
 $latte->setTempDirectory(__DIR__ . '/temp');
 $latte->setautoRefresh();
 
-
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 session_start();
 
-$filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/events.json';
-if (!file_exists($filename)) {
-    file_put_contents($filename, json_encode([]));
-}
+require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/HomeController.php';
+require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LoginController.php';
+require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/RegistrationController.php';
+require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LogoutController.php';
 
-$error = [];
-$newEvent = [];
-$name = $date = $description = $max = $userName = "";
+$homeController = new \Controller\HomeController();
+$homeController->controller();
 
+$loginController = new \Controller\LoginController();
+$loginController->login();
 
-if (isset($_POST['submit'])) {
-    $newEvent = [
-        "id" => $_POST['id'] = uniqid('F', false),
-        "name" => $_POST['name'],
-        "date" => $_POST['date'],
-        "description" => $_POST['description'],
-        "max" => $_POST['max'],
-        "isMax" => $_POST['isMax'] = 0,
-    ];
+$registrationController = new \Controller\RegistrationController();
+$registrationController->register();
 
-    if (strlen($_POST['name']) <= 3) {
-        $error['name'] = "";
-    }
-    if (strtotime($_POST['date']) < time()) {
-        $error['date'] = "";
-    }
-    if (strlen($_POST['description']) <= 5) {
-        $error['description'] = "";
-    }
-    if (!is_numeric($_POST['max']) || $_POST['max'] < 0) {
-        $error['max'] = "";
-    }
-    if (empty($error)) {
-        $file = file_get_contents("json/events.json");
-        $oldEvent = json_decode($file, true, 521);
-        $oldEvent[] = $newEvent;
-        $encodedData = json_encode($oldEvent, JSON_PRETTY_PRINT);
-        file_put_contents("json/events.json", $encodedData);
-    }
-}
-
-$old = json_decode(file_get_contents("json/events.json"), true);
-
-
-foreach ($old as $registration) {
-
-    $bName = 'binDabei' . '_' . $registration['id'];
-
-    if (isset($_POST[$bName])) {
-        $addition = json_decode(file_get_contents("json/events.json"), true);
-        $targetId = $registration['id'];
-        $newValue = ++$registration['isMax'];
-
-        foreach ($addition as $key => $participant) {
-            if ($participant['id'] === $targetId) {
-                $addition[$key]['isMax'] = $newValue;
-            }
-        }
-        file_put_contents("json/events.json", json_encode($addition, JSON_PRETTY_PRINT));
-        header("Location: /index.php");
-    }
-}
-
-$name = $_POST['name'] ?? NULL;
-$date = $_POST['date'] ?? NULL;
-$description = $_POST['description'] ?? NULL;
-$max = $_POST['max'] ?? NULL;
-
-
-$userName = $_SESSION["username"] ?? NULL;
-
-if (isset($_POST['logout'])) {
-    unset($_SESSION["username"]);
-    header("location: /index.php");
-}
-
-$latte->render(__DIR__ . '/templates/index.latte', [
-    'old' => $old,
-    'error' => $error,
-    'newEvent' => $newEvent,
-    'name' => $name,
-    'date' => $date,
-    'description' => $description,
-    'max' => $max,
-    'userName' => $userName,
-]);
-
-
+$logoutController = new \Controller\LogoutController();
+$logoutController->logout();
