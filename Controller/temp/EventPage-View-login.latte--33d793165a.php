@@ -2,10 +2,10 @@
 
 use Latte\Runtime as LR;
 
-/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/login.latte */
-final class Template866358ed4f extends Latte\Runtime\Template
+/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/View/login.latte */
+final class Template33d793165a extends Latte\Runtime\Template
 {
-	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/login.latte';
+	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/View/login.latte';
 
 	public const Blocks = [
 		['content' => 'blockContent'],
@@ -33,7 +33,7 @@ final class Template866358ed4f extends Latte\Runtime\Template
 			echo LR\Filters::escapeHtmlText($error) /* line 2 */;
 		}
 		echo '
-    <form action="/login.php" method="post">
+    <form action="/index.php?page=login" method="post">
         <div>
             <label> E-Mail:
                 <input type="email" name="loginMail" value="';
@@ -54,6 +54,9 @@ final class Template866358ed4f extends Latte\Runtime\Template
             </label>
         </div>
     </form>
+    <a href="http://localhost:8000/index.php?page=registrierung">
+        <button> Registrieren </button>
+    </a>
 
 ';
 	}

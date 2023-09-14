@@ -2,10 +2,10 @@
 
 use Latte\Runtime as LR;
 
-/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte */
-final class Template267450c965 extends Latte\Runtime\Template
+/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/View/registration.latte */
+final class Template3cd0ee59a6 extends Latte\Runtime\Template
 {
-	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte';
+	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/View/registration.latte';
 
 	public const Blocks = [
 		['content' => 'blockContent'],
@@ -28,7 +28,7 @@ final class Template267450c965 extends Latte\Runtime\Template
 		extract($ʟ_args);
 		unset($ʟ_args);
 
-		echo '    <form action="/user.php" method="post">
+		echo '    <form action="/index.php?page=registrierung" method="post">
         <div>
             <label> Name:
                 <input type="text" name="userName"
@@ -94,11 +94,14 @@ final class Template267450c965 extends Latte\Runtime\Template
             </label>
         </div>
         <div>
-            <label>Registrierung:
+            <label>
                 <input type="submit" name="register" value="Registrierung">
             </label>
         </div>
     </form>
+    <a href="http://localhost:8000/index.php?page=login">
+        <button> Log In</button>
+    </a>
 ';
 	}
 }

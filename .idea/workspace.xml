@@ -5,49 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db6773ef-f23b-407c-acab-f9ce8505ba59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/LogoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LogoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/home.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/home.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/login.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/login.latte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/registration.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/registration.latte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/events.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.latte" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.latte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.latte" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.latte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user.latte" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user.latte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/bin/latte-lint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Escaper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/AuxiliaryNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Html/ElementNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Php/Expression/ConstantFetchNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Php/Scalar/InterpolatedStringNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Tag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateGenerator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateLexer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParserHtml.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Token.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TokenStream.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Engine.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/CoreExtension.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/CaptureNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/ContentTypeNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/IfNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/NTagNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/PrintNode.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Passes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Runtime/Filters.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Runtime/Template.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Sandbox/SecurityPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Tools/Linter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-index.latte--85dcc93bd2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-index.latte--85dcc93bd2.php.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-login.latte--866358ed4f.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-login.latte--866358ed4f.php.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-user.latte--267450c965.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-user.latte--267450c965.php.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-user.latte--639765ce20.php.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="MVC" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -114,28 +88,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/fabianmaiwald/PhpstormProjects/EventPage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.PHP&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/fabianmaiwald/PhpstormProjects/EventPage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.PHP",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PHP&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PHP"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/json" />

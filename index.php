@@ -1,5 +1,10 @@
 <?php declare(strict_types=1);
 
+use Controller\HomeController;
+use Controller\LoginController;
+use Controller\LogoutController;
+use Controller\RegistrationController;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $latte = new Latte\Engine;
@@ -17,14 +22,17 @@ require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LoginCon
 require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/RegistrationController.php';
 require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LogoutController.php';
 
-$homeController = new \Controller\HomeController();
-$homeController->controller();
+if ($_SERVER['REQUEST_URI'] === '/index.php?page=login') {
+    $loginController = new LoginController();
+    $loginController->login();
+} elseif ($_SERVER['REQUEST_URI'] === '/index.php?page=registrierung') {
+    $registrationController = new RegistrationController();
+    $registrationController->register();
+} elseif ($_SERVER['REQUEST_URI'] === '/index.php?page=logout') {
+    $logoutController = new LogoutController();
+    $logoutController->logout();
+} else {
+    $homeController = new HomeController();
+    $homeController->controller();
+}
 
-$loginController = new \Controller\LoginController();
-$loginController->login();
-
-$registrationController = new \Controller\RegistrationController();
-$registrationController->register();
-
-$logoutController = new \Controller\LogoutController();
-$logoutController->logout();

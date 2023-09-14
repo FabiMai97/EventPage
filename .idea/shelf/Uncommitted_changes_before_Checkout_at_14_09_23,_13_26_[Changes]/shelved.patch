@@ -1,0 +1,751 @@
+Index: index.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php declare(strict_types=1);\n\nrequire_once __DIR__ . '/vendor/autoload.php';\n\n$latte = new Latte\\Engine;\n$latte->setTempDirectory(__DIR__ . '/temp');\n$latte->setautoRefresh();\n\nini_set('display_errors', '1');\nini_set('display_startup_errors', '1');\nerror_reporting(E_ALL);\n\nsession_start();\n\nrequire_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/HomeController.php';\nrequire_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LoginController.php';\nrequire_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/RegistrationController.php';\nrequire_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LogoutController.php';\n\n$homeController = new \\Controller\\HomeController();\n$homeController->controller();\n\n$loginController = new \\Controller\\LoginController();\n$loginController->login();\n\n$registrationController = new \\Controller\\RegistrationController();\n$registrationController->register();\n\n$logoutController = new \\Controller\\LogoutController();\n$logoutController->logout();\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.php b/index.php
+--- a/index.php	
++++ b/index.php	
+@@ -10,21 +10,29 @@
+ ini_set('display_startup_errors', '1');
+ error_reporting(E_ALL);
+ 
+-session_start();
++if (!isset($_SESSION)) {
++    session_start();
++}
+ 
+ require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/HomeController.php';
+ require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LoginController.php';
+ require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/RegistrationController.php';
+ require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LogoutController.php';
++require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Model/UserRepository.php';
++require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Model/UserEntityManager.php';
++require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Core/EventValidierung.php';
+ 
+-$homeController = new \Controller\HomeController();
+-$homeController->controller();
+-
+-$loginController = new \Controller\LoginController();
+-$loginController->login();
+-
+-$registrationController = new \Controller\RegistrationController();
+-$registrationController->register();
+-
+-$logoutController = new \Controller\LogoutController();
+-$logoutController->logout();
++if ($_SERVER['REQUEST_URI'] === "/index.php?page=login") {
++    $loginController = new \Controller\LoginController();
++    $loginController->login();
++} elseif ($_SERVER['REQUEST_URI'] === "/index.php?page=registrierung") {
++    $registrationController = new \Controller\RegistrationController();
++    $registrationController->register();
++} elseif ($_SERVER['REQUEST_URI'] === "/index.php?page=logout") {
++    $logoutController = new \Controller\LogoutController();
++    $logoutController->logout();
++} else {
++    $homeController = new \Controller\HomeController();
++    $homeController->controller();
++}
++
+Index: json/events.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[\n  {\n    \"id\": \"F64f0849907dca\",\n    \"name\": \"Parooka\",\n    \"date\": \"2023-09-06\",\n    \"description\": \"lkjhgfd\",\n    \"max\": \"6\",\n    \"isMax\": 6\n  },\n  {\n    \"id\": \"F64f8445f5c20f\",\n    \"name\": \"FooFooBarBar\",\n    \"date\": \"2023-09-21\",\n    \"description\": \"asdfasdfasdf\",\n    \"max\": \"5\",\n    \"isMax\": 5\n  }\n]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/json/events.json b/json/events.json
+--- a/json/events.json	
++++ b/json/events.json	
+@@ -1,18 +1,18 @@
+ [
+-  {
+-    "id": "F64f0849907dca",
+-    "name": "Parooka",
+-    "date": "2023-09-06",
+-    "description": "lkjhgfd",
+-    "max": "6",
+-    "isMax": 6
+-  },
+-  {
+-    "id": "F64f8445f5c20f",
+-    "name": "FooFooBarBar",
+-    "date": "2023-09-21",
+-    "description": "asdfasdfasdf",
+-    "max": "5",
+-    "isMax": 5
+-  }
+-]
+\ No newline at end of file
++    {
++        "id": "F64f0849907dca",
++        "name": "Parooka",
++        "date": "2023-09-06",
++        "description": "lkjhgfd",
++        "max": "96",
++        "isMax": 96
++    },
++    {
++        "id": "F64f8445f5c20f",
++        "name": "FooFooBarBar",
++        "date": "2023-09-21",
++        "description": "asdfasdfasdf",
++        "max": "500",
++        "isMax": 44
++    }
++    ]
+\ No newline at end of file
+Index: temp/EventPage-templates-user.latte--267450c965.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nuse Latte\\Runtime as LR;\n\n/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte */\nfinal class Template267450c965 extends Latte\\Runtime\\Template\n{\n\tpublic const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte';\n\n\tpublic const Blocks = [\n\t\t['content' => 'blockContent'],\n\t];\n\n\n\tpublic function main(array $ʟ_args): void\n\t{\n\t\textract($ʟ_args);\n\t\tunset($ʟ_args);\n\n\t\t$this->renderBlock('content', get_defined_vars()) /* line 1 */;\n\t}\n\n\n\t/** {block content} on line 1 */\n\tpublic function blockContent(array $ʟ_args): void\n\t{\n\t\textract($this->params);\n\t\textract($ʟ_args);\n\t\tunset($ʟ_args);\n\n\t\techo '    <form action=\"/user.php\" method=\"post\">\n        <div>\n            <label> Name:\n                <input type=\"text\" name=\"userName\"\n                       value=\"';\n\t\tif (isset($userName)) /* line 6 */ {\n\t\t\techo LR\\Filters::escapeHtmlAttr($userName) /* line 6 */;\n\t\t}\n\t\techo '\">\n';\n\t\tob_start(fn() => '') /* line 7 */;\n\t\ttry {\n\t\t\techo '                <span\n                        style=\"color:#ff4500\"> User Name to short! ';\n\n\t\t} finally {\n\t\t\t$ʟ_ifA = ob_get_clean();\n\t\t}\n\t\tif (isset($error['userName'])) /* line 7 */ {\n\t\t\techo $ʟ_ifA;\n\t\t}\n\t\techo '\n            </label>\n        </div>\n        <div>\n            <label> E-Mail:\n                <input type=\"email\" name=\"email\"\n                       value=\"';\n\t\tif (isset($email)) /* line 14 */ {\n\t\t\techo LR\\Filters::escapeHtmlAttr($email) /* line 14 */;\n\t\t}\n\t\techo '\">\n';\n\t\tob_start(fn() => '') /* line 15 */;\n\t\ttry {\n\t\t\techo '                <span\n                        style=\"color:#ff4500\"> Mail is already in use! ';\n\n\t\t} finally {\n\t\t\t$ʟ_ifA = ob_get_clean();\n\t\t}\n\t\tif (isset($error['email'])) /* line 15 */ {\n\t\t\techo $ʟ_ifA;\n\t\t}\n\t\techo '\n            </label>\n        </div>\n        <div>\n            <label>Passwort:\n                <input type=\"password\" name=\"password\" minlength=\"4\">\n';\n\t\tob_start(fn() => '') /* line 22 */;\n\t\ttry {\n\t\t\techo '                <span\n                        style=\"color:#ff4500\"> Password to short! ';\n\n\t\t} finally {\n\t\t\t$ʟ_ifA = ob_get_clean();\n\t\t}\n\t\tif (isset($error['password'])) /* line 22 */ {\n\t\t\techo $ʟ_ifA;\n\t\t}\n\t\techo '\n            </label>\n        </div>\n        <div>\n            <label>Registrierung:\n                <input type=\"submit\" name=\"register\" value=\"Registrierung\">\n            </label>\n        </div>\n    </form>\n';\n\t}\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/temp/EventPage-templates-user.latte--267450c965.php b/temp/EventPage-templates-user.latte--267450c965.php
+--- a/temp/EventPage-templates-user.latte--267450c965.php	
++++ b/temp/EventPage-templates-user.latte--267450c965.php	
+@@ -2,10 +2,10 @@
+ 
+ use Latte\Runtime as LR;
+ 
+-/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte */
++/** source: /home.php/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte */
+ final class Template267450c965 extends Latte\Runtime\Template
+ {
+-	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte';
++	public const Source = '/home.php/fabianmaiwald/PhpstormProjects/EventPage/templates/user.latte';
+ 
+ 	public const Blocks = [
+ 		['content' => 'blockContent'],
+Index: temp/EventPage-templates-login.latte--866358ed4f.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nuse Latte\\Runtime as LR;\n\n/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/login.latte */\nfinal class Template866358ed4f extends Latte\\Runtime\\Template\n{\n\tpublic const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/login.latte';\n\n\tpublic const Blocks = [\n\t\t['content' => 'blockContent'],\n\t];\n\n\n\tpublic function main(array $ʟ_args): void\n\t{\n\t\textract($ʟ_args);\n\t\tunset($ʟ_args);\n\n\t\t$this->renderBlock('content', get_defined_vars()) /* line 1 */;\n\t}\n\n\n\t/** {block content} on line 1 */\n\tpublic function blockContent(array $ʟ_args): void\n\t{\n\t\textract($this->params);\n\t\textract($ʟ_args);\n\t\tunset($ʟ_args);\n\n\t\techo '    ';\n\t\tif (isset($error)) /* line 2 */ {\n\t\t\techo LR\\Filters::escapeHtmlText($error) /* line 2 */;\n\t\t}\n\t\techo '\n    <form action=\"/login.php\" method=\"post\">\n        <div>\n            <label> E-Mail:\n                <input type=\"email\" name=\"loginMail\" value=\"';\n\t\tif (isset($email)) /* line 6 */ {\n\t\t\techo LR\\Filters::escapeHtmlAttr($email) /* line 6 */;\n\t\t}\n\t\techo '\">\n            </label>\n        </div>\n        <div>\n            <label> Passwort:\n                <input type=\"password\" name=\"loginPassword\">\n            </label>\n        </div>\n        <div>\n            <label>\n                <input type=\"submit\" name=\"loginSubmit\" value=\"Log In\">\n            </label>\n        </div>\n    </form>\n\n';\n\t}\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/temp/EventPage-templates-login.latte--866358ed4f.php b/temp/EventPage-templates-login.latte--866358ed4f.php
+--- a/temp/EventPage-templates-login.latte--866358ed4f.php	
++++ b/temp/EventPage-templates-login.latte--866358ed4f.php	
+@@ -2,10 +2,10 @@
+ 
+ use Latte\Runtime as LR;
+ 
+-/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/login.latte */
++/** source: /home.php/fabianmaiwald/PhpstormProjects/EventPage/templates/login.php.latte */
+ final class Template866358ed4f extends Latte\Runtime\Template
+ {
+-	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/login.latte';
++	public const Source = '/home.php/fabianmaiwald/PhpstormProjects/EventPage/templates/login.php.latte';
+ 
+ 	public const Blocks = [
+ 		['content' => 'blockContent'],
+@@ -33,7 +33,7 @@
+ 			echo LR\Filters::escapeHtmlText($error) /* line 2 */;
+ 		}
+ 		echo '
+-    <form action="/login.php" method="post">
++    <form action="/login.php.php" method="post">
+         <div>
+             <label> E-Mail:
+                 <input type="email" name="loginMail" value="';
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"db6773ef-f23b-407c-acab-f9ce8505ba59\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/codeception.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/codeception.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/php.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/php.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/phpspec.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/phpspec.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/index.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/json/events.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/json/events.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/json/users.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/json/users.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/login.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/login.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/index.latte\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/index.latte\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/login.latte\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/login.latte\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/user.latte\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/user.latte\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/user.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/user.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/composer/autoload_classmap.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/composer/autoload_static.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/composer/installed.json\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/composer/installed.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/bin/latte-lint\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/readme.md\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Escaper.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/AuxiliaryNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Html/ElementNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Php/Expression/ConstantFetchNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Php/Scalar/InterpolatedStringNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Tag.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateGenerator.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateLexer.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParser.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParserHtml.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Token.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TokenStream.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Engine.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/CoreExtension.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/CaptureNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/ContentTypeNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/IfNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/NTagNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/PrintNode.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Passes.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Runtime/Filters.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Runtime/Template.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Latte/Sandbox/SecurityPolicy.php\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vendor/latte/latte/src/Tools/Linter.php\" beforeDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerConfigs\">\n    <option name=\"configs\">\n      <option value=\"$PROJECT_DIR$/tools/composer.json\" />\n    </option>\n  </component>\n  <component name=\"ComposerSettings\" synchronizationState=\"SYNCHRONIZE\">\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\n    <execution />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"tsconfig.json\" />\n        <option value=\"package.json\" />\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"PhpDebugGeneral\" notify_if_session_was_finished_without_being_paused=\"false\" />\n  <component name=\"PhpServers\">\n    <servers>\n      <server host=\"localhost\" id=\"b39c4d69-ef34-46a3-957f-d9171a63ba90\" name=\"localhost\" port=\"8000\" />\n    </servers>\n  </component>\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"/bin/php\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/tools/vendor/phpstan/phpstan\" />\n      <path value=\"$PROJECT_DIR$/tools/vendor/tracy/tracy\" />\n      <path value=\"$PROJECT_DIR$/tools/vendor/nikic/php-parser\" />\n      <path value=\"$PROJECT_DIR$/tools/vendor/nette/tester\" />\n      <path value=\"$PROJECT_DIR$/tools/vendor/nette/finder\" />\n      <path value=\"$PROJECT_DIR$/tools/vendor/nette/utils\" />\n      <path value=\"$PROJECT_DIR$/tools/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/nette/utils\" />\n      <path value=\"$PROJECT_DIR$/vendor/latte/latte\" />\n    </include_path>\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 2\n}</component>\n  <component name=\"ProjectId\" id=\"2TVdsXfyyvtFkkSBY7pd5Qgw339\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/fabianmaiwald/PhpstormProjects/EventPage&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.PHP&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  },\n  &quot;keyToStringList&quot;: {\n    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [\n      &quot;PHP&quot;\n    ]\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/json\" />\n      <recent name=\"$PROJECT_DIR$\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"db6773ef-f23b-407c-acab-f9ce8505ba59\" name=\"Changes\" comment=\"\" />\n      <created>1691132388190</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1691132388190</updated>\n      <workItem from=\"1691132389209\" duration=\"1536000\" />\n      <workItem from=\"1691134451561\" duration=\"17351000\" />\n      <workItem from=\"1691168520486\" duration=\"1276000\" />\n      <workItem from=\"1691401090166\" duration=\"5904000\" />\n      <workItem from=\"1691407037554\" duration=\"18065000\" />\n      <workItem from=\"1691483312775\" duration=\"76620000\" />\n      <workItem from=\"1691756901767\" duration=\"4027000\" />\n      <workItem from=\"1692165183699\" duration=\"1667000\" />\n      <workItem from=\"1692167378991\" duration=\"9000\" />\n      <workItem from=\"1692167980882\" duration=\"68000\" />\n      <workItem from=\"1692168658278\" duration=\"10975000\" />\n      <workItem from=\"1692181382290\" duration=\"12279000\" />\n      <workItem from=\"1692251087061\" duration=\"26392000\" />\n      <workItem from=\"1692337002957\" duration=\"19474000\" />\n      <workItem from=\"1692359736105\" duration=\"5723000\" />\n      <workItem from=\"1692450356913\" duration=\"43000\" />\n      <workItem from=\"1692543783175\" duration=\"620000\" />\n      <workItem from=\"1692772244366\" duration=\"11241000\" />\n      <workItem from=\"1692783896857\" duration=\"11800000\" />\n      <workItem from=\"1692855383919\" duration=\"21517000\" />\n      <workItem from=\"1692879673271\" duration=\"3901000\" />\n      <workItem from=\"1692942137023\" duration=\"2689000\" />\n      <workItem from=\"1692945628671\" duration=\"8643000\" />\n      <workItem from=\"1692955221032\" duration=\"44000\" />\n      <workItem from=\"1692955271032\" duration=\"28000\" />\n      <workItem from=\"1692955304356\" duration=\"36000\" />\n      <workItem from=\"1692955345565\" duration=\"15000\" />\n      <workItem from=\"1692955365948\" duration=\"13062000\" />\n      <workItem from=\"1693306665412\" duration=\"6000\" />\n      <workItem from=\"1693319320805\" duration=\"44000\" />\n      <workItem from=\"1693372954015\" duration=\"3378000\" />\n      <workItem from=\"1693377415052\" duration=\"12063000\" />\n      <workItem from=\"1693394783381\" duration=\"9383000\" />\n      <workItem from=\"1693459323303\" duration=\"26953000\" />\n      <workItem from=\"1693978008099\" duration=\"1262000\" />\n      <workItem from=\"1693979279501\" duration=\"2896000\" />\n      <workItem from=\"1693982865500\" duration=\"11515000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"UnknownFeatures\">\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\"*.latte\" />\n  </component>\n  <component name=\"Vcs.Log.History.Properties\">\n    <option name=\"COLUMN_ID_ORDER\">\n      <list>\n        <option value=\"Default.Root\" />\n        <option value=\"Default.Author\" />\n        <option value=\"Default.Date\" />\n        <option value=\"Default.Subject\" />\n        <option value=\"Space.CommitStatus\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"Branch\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"Validierung\" />\n                </option>\n              </RecentGroup>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"master\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"master\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"XDebuggerManager\">\n    <watches-manager>\n      <configuration name=\"index.php\">\n        <watch expression=\"$newData\" />\n      </configuration>\n    </watches-manager>\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,49 +5,24 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="db6773ef-f23b-407c-acab-f9ce8505ba59" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/HomeController.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LoginController.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Controller/LogoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LogoutController.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/RegistrationController.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Core/EventValidierung.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/EventValidierung.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Model/EventEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventEntityManager.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Model/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventRepository.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Model/UserEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserEntityManager.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserRepository.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/View/home.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/home.latte" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/View/login.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/login.latte" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/View/registration.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/registration.latte" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/json/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/events.json" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/json/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/users.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/index.latte" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.latte" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/login.latte" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.latte" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/user.latte" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user.latte" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/user.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/bin/latte-lint" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/readme.md" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Escaper.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/AuxiliaryNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Html/ElementNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Php/Expression/ConstantFetchNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Nodes/Php/Scalar/InterpolatedStringNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Tag.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateGenerator.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateLexer.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParser.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParserHtml.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Token.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TokenStream.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Engine.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/CoreExtension.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/CaptureNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/ContentTypeNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/IfNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/NTagNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Nodes/PrintNode.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Essential/Passes.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Runtime/Filters.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Runtime/Template.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Sandbox/SecurityPolicy.php" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Tools/Linter.php" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-login.latte--866358ed4f.php" beforeDir="false" afterPath="$PROJECT_DIR$/temp/EventPage-templates-login.latte--866358ed4f.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/temp/EventPage-templates-user.latte--267450c965.php" beforeDir="false" afterPath="$PROJECT_DIR$/temp/EventPage-templates-user.latte--267450c965.php" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -75,7 +50,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="MVC" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -121,13 +96,14 @@
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;last_opened_file_path&quot;: &quot;/home/fabianmaiwald/PhpstormProjects/EventPage&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.PHP&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   },
+   &quot;keyToStringList&quot;: {
+@@ -138,8 +114,9 @@
+ }</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+-      <recent name="$PROJECT_DIR$/json" />
+       <recent name="$PROJECT_DIR$" />
++      <recent name="$PROJECT_DIR$/View" />
++      <recent name="$PROJECT_DIR$/json" />
+     </key>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+@@ -186,7 +163,21 @@
+       <workItem from="1693459323303" duration="26953000" />
+       <workItem from="1693978008099" duration="1262000" />
+       <workItem from="1693979279501" duration="2896000" />
+-      <workItem from="1693982865500" duration="11515000" />
++      <workItem from="1693982865500" duration="19383000" />
++      <workItem from="1694006344708" duration="1898000" />
++      <workItem from="1694065261961" duration="11068000" />
++      <workItem from="1694077927978" duration="11038000" />
++      <workItem from="1694151063233" duration="2740000" />
++      <workItem from="1694155417151" duration="5482000" />
++      <workItem from="1694163218834" duration="1537000" />
++      <workItem from="1694171127503" duration="8865000" />
++      <workItem from="1694372816305" duration="487000" />
++      <workItem from="1694582917522" duration="16379000" />
++      <workItem from="1694606511944" duration="2018000" />
++      <workItem from="1694609697327" duration="1923000" />
++      <workItem from="1694626601232" duration="279000" />
++      <workItem from="1694670261142" duration="4153000" />
++      <workItem from="1694677242569" duration="10156000" />
+     </task>
+     <servers />
+   </component>
+Index: Controller/RegistrationController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Controller;\n\nclass RegistrationController\n{\n\n}
+===================================================================
+diff --git a/Controller/RegistrationController.php b/Controller/RegistrationController.php
+--- a/Controller/RegistrationController.php	
++++ b/Controller/RegistrationController.php	
+@@ -1,8 +1,53 @@
+ <?php
++declare(strict_types=1);
+ 
+ namespace Controller;
+ 
++use Model\UserEntityManager;
++
+ class RegistrationController
+ {
++    private \Latte\Engine $latte;
++
++    public function __construct()
++    {
++        $this->latte = new \Latte\Engine;
++        $this->latte->setTempDirectory(__DIR__ . '/temp');
++        $this->latte->setautoRefresh();
++    }
+ 
++    public function register(): void
++    {
++        $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/users.json';
++
++        if (!file_exists($filename)) {
++            file_put_contents($filename, json_encode([]));
++        }
++
++
++        $error = [];
++        $newUser = [];
++        $userName = $email = "";
++        $liste = array_column(json_decode(file_get_contents("json/users.json"), true), 'email', 'userName');
++
++        if (isset($_POST['register'])) {
++            foreach ($liste as $list) {
++                if ($list === $_POST['email']) {
++                    header("location: http://localhost:8000/index.php?page=login", true, 0);
++                    exit;
++                }
++            }
++            $saveUser = new UserEntityManager();
++            $saveUser->save();
++        }
++
++
++        $userName = $_POST['userName'] ?? NUll;
++        $email = $_POST['email'] ?? NULL;
++
++        $this->latte->render('/home/fabianmaiwald/PhpstormProjects/EventPage/View/registration.latte', ['error' => $error,
++            'userName' => $userName,
++            'email' => $email,]);
++
++    }
+ }
+\ No newline at end of file
+Index: Controller/LoginController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Controller;\n\nclass LoginController\n{\n\n}
+===================================================================
+diff --git a/Controller/LoginController.php b/Controller/LoginController.php
+--- a/Controller/LoginController.php	
++++ b/Controller/LoginController.php	
+@@ -1,8 +1,35 @@
+ <?php
++declare(strict_types=1);
+ 
+ namespace Controller;
+ 
++use Latte\Engine;
++use Model\UserRepository;
++
+ class LoginController
+ {
++    private Engine $latte;
++
++    public function __construct()
++    {
++        $this->latte = new Engine;
++        $this->latte->setTempDirectory(__DIR__ . '/temp');
++        $this->latte->setautoRefresh();
++    }
+ 
++    public function login(): void
++    {
++
++        $findUser = new UserRepository();
++        $findUser->findByUsername();
++
++        $error = "";
++        $email = $_POST['loginMail'] ?? NULL;
++
++        $this->latte->render( __DIR__.'/View/login.latte', [
++            'error' => $error,
++            'email' => $email,
++        ]);
++
++    }
+ }
+\ No newline at end of file
+Index: Controller/HomeController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Controller;\n\nclass HomeController\n{\n\n}
+===================================================================
+diff --git a/Controller/HomeController.php b/Controller/HomeController.php
+--- a/Controller/HomeController.php	
++++ b/Controller/HomeController.php	
+@@ -1,8 +1,77 @@
+ <?php
++declare(strict_types=1);
+ 
+ namespace Controller;
+ 
++use Latte\Engine;
++
+ class HomeController
+ {
++    private \Latte\Engine $latte;
++
++    public function __construct()
++    {
++        $this->latte = new \Latte\Engine;
++        $this->latte->setTempDirectory(__DIR__ . '/temp');
++        $this->latte->setautoRefresh();
++    }
++
++    public function controller(): void
++    {
++
++        $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/events.json';
++        if (!file_exists($filename)) {
++            file_put_contents($filename, json_encode([]));
++        }
++
++        $eventValidation = new \Core\EventValidierung();
++        $eventValidation->eventValidation();
++
++        if (empty($error)) {
++            $file = file_get_contents("json/events.json");
++            $oldEvent = json_decode($file, true, 521);
++            $oldEvent[] = $newEvent;
++            $encodedData = json_encode($oldEvent, JSON_PRETTY_PRINT);
++            file_put_contents("json/events.json", $encodedData);
++        }
++
++
++        $old = json_decode(file_get_contents("json/events.json"), true, 512, JSON_THROW_ON_ERROR);
++
++
++        foreach ($old as $registration) {
++
++            $bName = 'binDabei' . '_' . $registration['id'];
+ 
++            if (isset($_POST[$bName])) {
++                $addition = json_decode(file_get_contents("json/events.json"), true, 512, JSON_THROW_ON_ERROR);
++                $targetId = $registration['id'];
++                $newValue = ++$registration['isMax'];
++
++                foreach ($addition as $key => $participant) {
++                    if ($participant['id'] === $targetId) {
++                        $addition[$key]['isMax'] = $newValue;
++                    }
++                }
++                file_put_contents("json/events.json", json_encode($addition, JSON_PRETTY_PRINT));
++                header("Location: /index.php");
++            }
++        }
++
++        $name = $_POST['name'] ?? NULL;
++        $date = $_POST['date'] ?? NULL;
++        $description = $_POST['description'] ?? NULL;
++        $max = $_POST['max'] ?? NULL;
++        $userName = $_SESSION["username"] ?? NULL;
++
++
++        $this->latte->render('/home/fabianmaiwald/PhpstormProjects/EventPage/View/home.latte', [
++            'old' => $old,
++            'name' => $name,
++            'date' => $date,
++            'description' => $description,
++            'max' => $max,
++            'userName' => $userName,
++        ]);
++    }
+ }
+\ No newline at end of file
+Index: Model/EventEntityManager.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Model;\n\nclass EventEntityManager\n{\n\n}
+===================================================================
+diff --git a/Model/EventEntityManager.php b/Model/EventEntityManager.php
+--- a/Model/EventEntityManager.php	
++++ b/Model/EventEntityManager.php	
+@@ -4,5 +4,8 @@
+ 
+ class EventEntityManager
+ {
+-
++    public function saveAll(): void
++    {
++//alle events speichern
++    }
+ }
+\ No newline at end of file
+Index: Model/UserEntityManager.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Model;\n\nclass UserEntityManager\n{\n\n}
+===================================================================
+diff --git a/Model/UserEntityManager.php b/Model/UserEntityManager.php
+--- a/Model/UserEntityManager.php	
++++ b/Model/UserEntityManager.php	
+@@ -4,5 +4,33 @@
+ 
+ class UserEntityManager
+ {
++    public function save(): void
++    {
++
++        if (isset($_POST['register'])) {
++            $newUser = [
++                "userName" => $_POST['userName'],
++                "email" => $_POST['email'],
++                "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
++            ];
+ 
++            $email = $_POST['email'];
++
++            if (strlen($_POST['userName']) <= 3) {
++                $error['userName'] = "";
++            }
++            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
++                $error['email'] = "";
++            }
++            if (strlen($_POST['password']) < 3) {
++                $error['password'] = "";
++            }
++
++            if (empty($error)) {
++                $oldUser = json_decode(file_get_contents("json/users.json"), true);
++                $oldUser[] = $newUser;
++                file_put_contents("json/users.json", json_encode($oldUser, JSON_PRETTY_PRINT));
++            }
++        }
++    }
+ }
+\ No newline at end of file
+Index: Model/EventRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Model;\n\nclass EventRepository\n{\n\n}
+===================================================================
+diff --git a/Model/EventRepository.php b/Model/EventRepository.php
+--- a/Model/EventRepository.php	
++++ b/Model/EventRepository.php	
+@@ -4,5 +4,8 @@
+ 
+ class EventRepository
+ {
+-
++    public function findALl(): void
++    {
++// gib  alle events aus
++    }
+ }
+\ No newline at end of file
+Index: Model/UserRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Model;\n\nclass UserRepository\n{\n\n}
+===================================================================
+diff --git a/Model/UserRepository.php b/Model/UserRepository.php
+--- a/Model/UserRepository.php	
++++ b/Model/UserRepository.php	
+@@ -4,5 +4,27 @@
+ 
+ class UserRepository
+ {
++    public string $error = '';
++
++    public function findByUsername(): ?array
++    {
++        $users = json_decode(file_get_contents("json/users.json"), true, 512, JSON_THROW_ON_ERROR);
++
++        if (isset($_POST['loginSubmit'])) {
++            foreach ($users as $user) {
++                if ((password_verify($_POST['loginPassword'], $user['password'])) && ($_POST['loginMail']) === $user['email']) {
++                    $_SESSION["username"] = $user['userName'];
++                    header("location: http://localhost:8000/index.php", true, 0);
++                    exit;
++                }
++
++                $this->error = "Falsche E-Mail oder Passwort!";
++            }
++        }
++        return null;
++
++//spezifischen User finden und passwort überprüfen oder in der registrierung anmerken, dass die mail in nutzung ist
++    }
++}
+ 
+-}
+\ No newline at end of file
++// keine superglobal kein verify nur username raussuchen im controller verglecihen und dann anmelden
+\ No newline at end of file
+Index: Core/EventValidierung.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Core;\n\nclass EventValidierung\n{\n\n}
+===================================================================
+diff --git a/Core/EventValidierung.php b/Core/EventValidierung.php
+--- a/Core/EventValidierung.php	
++++ b/Core/EventValidierung.php	
+@@ -4,5 +4,36 @@
+ 
+ class EventValidierung
+ {
++    public array $error;
++    public array $newEvent;
++    public function eventValidation():array
++    {
++        $this->error = [];
++        $this->newEvent = [];
+ 
++        if (isset($_POST['submit'])) {
++            $newEvent = [
++                "id" => $_POST['id'] = uniqid('F', false),
++                "name" => $_POST['name'],
++                "date" => $_POST['date'],
++                "description" => $_POST['description'],
++                "max" => $_POST['max'],
++                "isMax" => $_POST['isMax'] = 0,
++            ];
++
++            if (strlen($_POST['name']) <= 3) {
++                $error['name'] = "";
++            }
++            if (strtotime($_POST['date']) < time()) {
++                $error['date'] = "";
++            }
++            if (strlen($_POST['description']) <= 5) {
++                $error['description'] = "";
++            }
++            if (!is_numeric($_POST['max']) || $_POST['max'] < 0) {
++                $error['max'] = "";
++            }
++        }
++        return $error;
++    }
+ }
+\ No newline at end of file
+Index: Controller/LogoutController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nnamespace Controller;\n\nclass LogoutController\n{\n\n}
+===================================================================
+diff --git a/Controller/LogoutController.php b/Controller/LogoutController.php
+--- a/Controller/LogoutController.php	
++++ b/Controller/LogoutController.php	
+@@ -1,8 +1,21 @@
+ <?php
+ 
++declare(strict_types=1);
++
+ namespace Controller;
+ 
+ class LogoutController
+ {
+ 
++
++    public
++    function logout(): void
++    {
++        $userName = $_SESSION["username"] ?? NULL;
++
++        if (isset($_POST['logout'])) {
++            unset($_SESSION["username"]);
++            header("location: /index.php");
++        }
++    }
+ }
+\ No newline at end of file
+Index: View/home.latte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{block content}\n    {if isset($userName)}\n        <label> Wilkommen {$userName}</label>\n        <form action=\"/index.php\" method=\"post\">\n            <div>\n                <input type=\"submit\" name=\"logout\" value=\"Abmelden\">\n            </div>\n        </form>\n    {else}\n        <a href=\"http://localhost:8000/login.php\">\n            <button> Anmeldung</button>\n            <br><br>\n        </a>\n    {/if}\n\n    <form action=\"/index.php\" method=\"post\">\n        <div>\n            <label> Name:\n                <input type=\"text\" name=\"name\"\n                       value=\"{if isset($name)}{$name}{/if}\">\n                {if}<span\n                        style=\"color:#ff4500\"> Error: Der Eventname muss mehr als 3 Zeichen haben!{/if isset($error['name'])}\n            </label>\n        </div>\n        <div>\n            <label> Datum:\n                <input type=\"date\" name=\"date\"\n                       value=\"{if isset($date)}{$date}{/if}\">\n                {if}<span\n                        style=\"color:#ff4500\"> Error: Das Datum muss in der Zukunft liegen!{/if isset($error['date'])}\n            </label>\n        </div>\n        <div>\n            <label>Beschreibung:\n                <textarea type=\"text\" name=\"description\" rows=\"5\"\n                          cols=\"50\">{if isset($description)}{$description}{/if}</textarea>\n                {if}<span\n                        style=\"color:#ff4500\"> Error: Die Eventbeschreibung muss mehr als 5 Zeichen haben!{/if isset($error['description'])}\n            </label>\n        </div>\n        <div>\n            <label> Maximale Anzahl Personen:\n                <input type=\"number\" name=\"max\"\n                       value=\"{if isset($max)}{$max}{/if}\">\n                {if}<span\n                        style=\"color:#ff4500\"> Error: Maximale Anzahl von Personen muss mindestens 1 sein!{/if isset($error['max'])}\n            </label>\n        </div>\n        <div>\n            <label>\n                <input type=\"submit\" name=\"submit\" value=\"Submit\"><br><br>\n            </label>\n        </div>\n    </form>\n\n    <h2>Festival Liste:</h2>\n\n    {foreach $old as $dol}\n        <span>\n            Name: {$dol['name']} <br>\n            Datum: {$dol['date']} <br>\n            Beschreibung: {$dol ['description']} <br>\n            Maximale Anzahl: {$dol['max']} <br><br>\n        </span>\n    {/foreach}\n    <h2> Anmeldung</h2>\n\n    {foreach $old as $registration}\n        <h4> {$registration['name']}</h4>\n\n        {if $registration['isMax'] < $registration['max']}\n            <form action=\"/index.php\" method=\"POST\">\n                <input type=\"submit\" name=\"binDabei_{$registration['id']}\" value=\"Bin Dabei!\"></form>\n        {/if}\n        <span> Der Zeit angemeldet: {$registration['isMax']} / {$registration['max']}<br><br></span>\n    {/foreach}\n{/block}\n
+===================================================================
+diff --git a/View/home.latte b/View/home.latte
+--- a/View/home.latte	
++++ b/View/home.latte	
+@@ -1,14 +1,18 @@
+ {block content}
+     {if isset($userName)}
+         <label> Wilkommen {$userName}</label>
+-        <form action="/index.php" method="post">
++        <form action="/index.php?page=logout" method="post">
+             <div>
+                 <input type="submit" name="logout" value="Abmelden">
+             </div>
+         </form>
+     {else}
+-        <a href="http://localhost:8000/login.php">
++        <a href="http://localhost:8000/index.php?page=login">
+             <button> Anmeldung</button>
++            <br>
++        </a>
++        <a href="http://localhost:8000/index.php?page=registrierung">
++            <button> Reigstreirung</button>
+             <br><br>
+         </a>
+     {/if}
+Index: View/login.latte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{block content}\n    {if isset($error)}{$error}{/if}\n    <form action=\"/login.php\" method=\"post\">\n        <div>\n            <label> E-Mail:\n                <input type=\"email\" name=\"loginMail\" value=\"{if isset($email)}{$email}{/if}\">\n            </label>\n        </div>\n        <div>\n            <label> Passwort:\n                <input type=\"password\" name=\"loginPassword\">\n            </label>\n        </div>\n        <div>\n            <label>\n                <input type=\"submit\" name=\"loginSubmit\" value=\"Log In\">\n            </label>\n        </div>\n    </form>\n\n{/block}
+===================================================================
+diff --git a/View/login.latte b/View/login.latte
+--- a/View/login.latte	
++++ b/View/login.latte	
+@@ -1,6 +1,6 @@
+ {block content}
+     {if isset($error)}{$error}{/if}
+-    <form action="/login.php" method="post">
++    <form action="/index.php?page=login" method="post">
+         <div>
+             <label> E-Mail:
+                 <input type="email" name="loginMail" value="{if isset($email)}{$email}{/if}">
+@@ -17,5 +17,9 @@
+             </label>
+         </div>
+     </form>
++    <a href="http://localhost:8000/index.php?page=registrierung">
++        <button> Registrierung</button>
++    </a>
++
+ 
+ {/block}
+\ No newline at end of file
+Index: View/registration.latte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{block content}\n    <form action=\"/user.php\" method=\"post\">\n        <div>\n            <label> Name:\n                <input type=\"text\" name=\"userName\"\n                       value=\"{if isset($userName)}{$userName}{/if}\">\n                {if}<span\n                        style=\"color:#ff4500\"> User Name to short! {/if isset($error['userName'])}\n            </label>\n        </div>\n        <div>\n            <label> E-Mail:\n                <input type=\"email\" name=\"email\"\n                       value=\"{if isset($email)}{$email}{/if}\">\n                {if}<span\n                        style=\"color:#ff4500\"> Mail is already in use! {/if isset($error['email'])}\n            </label>\n        </div>\n        <div>\n            <label>Passwort:\n                <input type=\"password\" name=\"password\" minlength=\"4\">\n                {if}<span\n                        style=\"color:#ff4500\"> Password to short! {/if isset($error['password'])}\n            </label>\n        </div>\n        <div>\n            <label>Registrierung:\n                <input type=\"submit\" name=\"register\" value=\"Registrierung\">\n            </label>\n        </div>\n    </form>\n{/block}
+===================================================================
+diff --git a/View/registration.latte b/View/registration.latte
+--- a/View/registration.latte	
++++ b/View/registration.latte	
+@@ -1,5 +1,5 @@
+ {block content}
+-    <form action="/user.php" method="post">
++    <form action="/index.php?page=registrierung" method="post">
+         <div>
+             <label> Name:
+                 <input type="text" name="userName"

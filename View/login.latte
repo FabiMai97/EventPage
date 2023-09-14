@@ -1,6 +1,6 @@
 {block content}
     {if isset($error)}{$error}{/if}
-    <form action="/login.php" method="post">
+    <form action="/index.php?page=login" method="post">
         <div>
             <label> E-Mail:
                 <input type="email" name="loginMail" value="{if isset($email)}{$email}{/if}">
@@ -17,5 +17,8 @@
             </label>
         </div>
     </form>
+    <a href="http://localhost:8000/index.php?page=registrierung">
+        <button> Registrieren </button>
+    </a>
 
 {/block}

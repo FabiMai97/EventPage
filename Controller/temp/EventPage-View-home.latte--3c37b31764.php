@@ -2,10 +2,10 @@
 
 use Latte\Runtime as LR;
 
-/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/templates/index.latte */
-final class Template85dcc93bd2 extends Latte\Runtime\Template
+/** source: /home/fabianmaiwald/PhpstormProjects/EventPage/View/home.latte */
+final class Template3c37b31764 extends Latte\Runtime\Template
 {
-	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/templates/index.latte';
+	public const Source = '/home/fabianmaiwald/PhpstormProjects/EventPage/View/home.latte';
 
 	public const Blocks = [
 		['content' => 'blockContent'],
@@ -26,7 +26,7 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 		extract($this->params);
 
 		if (!$this->getReferringTemplate() || $this->getReferenceType() === 'extends') {
-			foreach (array_intersect_key(['dol' => '58', 'registration' => '68'], $this->params) as $ʟ_v => $ʟ_l) {
+			foreach (array_intersect_key(['dol' => '62', 'registration' => '72'], $this->params) as $ʟ_v => $ʟ_l) {
 				trigger_error("Variable \$$ʟ_v overwritten in foreach on line $ʟ_l");
 			}
 		}
@@ -45,15 +45,19 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 			echo '        <label> Wilkommen ';
 			echo LR\Filters::escapeHtmlText($userName) /* line 3 */;
 			echo '</label>
-        <form action="/index.php" method="post">
+        <form action="/index.php?page=logout" method="post">
             <div>
                 <input type="submit" name="logout" value="Abmelden">
             </div>
         </form>
 ';
 		} else /* line 9 */ {
-			echo '        <a href="http://localhost:8000/login.php">
+			echo '        <a href="http://localhost:8000/index.php?page=login">
             <button> Anmeldung</button>
+            <br>
+        </a>
+        <a href="http://localhost:8000/index.php?page=registrierung">
+            <button> Registrieren</button>
             <br><br>
         </a>
 ';
@@ -64,12 +68,12 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
             <label> Name:
                 <input type="text" name="name"
                        value="';
-		if (isset($name)) /* line 20 */ {
-			echo LR\Filters::escapeHtmlAttr($name) /* line 20 */;
+		if (isset($name)) /* line 24 */ {
+			echo LR\Filters::escapeHtmlAttr($name) /* line 24 */;
 		}
 		echo '">
 ';
-		ob_start(fn() => '') /* line 21 */;
+		ob_start(fn() => '') /* line 25 */;
 		try {
 			echo '                <span
                         style="color:#ff4500"> Error: Der Eventname muss mehr als 3 Zeichen haben!';
@@ -77,7 +81,7 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 		} finally {
 			$ʟ_ifA = ob_get_clean();
 		}
-		if (isset($error['name'])) /* line 21 */ {
+		if (isset($error['name'])) /* line 25 */ {
 			echo $ʟ_ifA;
 		}
 		echo '
@@ -87,12 +91,12 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
             <label> Datum:
                 <input type="date" name="date"
                        value="';
-		if (isset($date)) /* line 28 */ {
-			echo LR\Filters::escapeHtmlAttr($date) /* line 28 */;
+		if (isset($date)) /* line 32 */ {
+			echo LR\Filters::escapeHtmlAttr($date) /* line 32 */;
 		}
 		echo '">
 ';
-		ob_start(fn() => '') /* line 29 */;
+		ob_start(fn() => '') /* line 33 */;
 		try {
 			echo '                <span
                         style="color:#ff4500"> Error: Das Datum muss in der Zukunft liegen!';
@@ -100,7 +104,7 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 		} finally {
 			$ʟ_ifA = ob_get_clean();
 		}
-		if (isset($error['date'])) /* line 29 */ {
+		if (isset($error['date'])) /* line 33 */ {
 			echo $ʟ_ifA;
 		}
 		echo '
@@ -110,12 +114,12 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
             <label>Beschreibung:
                 <textarea type="text" name="description" rows="5"
                           cols="50">';
-		if (isset($description)) /* line 36 */ {
-			echo LR\Filters::escapeHtmlText($description) /* line 36 */;
+		if (isset($description)) /* line 40 */ {
+			echo LR\Filters::escapeHtmlText($description) /* line 40 */;
 		}
 		echo '</textarea>
 ';
-		ob_start(fn() => '') /* line 37 */;
+		ob_start(fn() => '') /* line 41 */;
 		try {
 			echo '                <span
                         style="color:#ff4500"> Error: Die Eventbeschreibung muss mehr als 5 Zeichen haben!';
@@ -123,7 +127,7 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 		} finally {
 			$ʟ_ifA = ob_get_clean();
 		}
-		if (isset($error['description'])) /* line 37 */ {
+		if (isset($error['description'])) /* line 41 */ {
 			echo $ʟ_ifA;
 		}
 		echo '
@@ -133,12 +137,12 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
             <label> Maximale Anzahl Personen:
                 <input type="number" name="max"
                        value="';
-		if (isset($max)) /* line 44 */ {
-			echo LR\Filters::escapeHtmlAttr($max) /* line 44 */;
+		if (isset($max)) /* line 48 */ {
+			echo LR\Filters::escapeHtmlAttr($max) /* line 48 */;
 		}
 		echo '">
 ';
-		ob_start(fn() => '') /* line 45 */;
+		ob_start(fn() => '') /* line 49 */;
 		try {
 			echo '                <span
                         style="color:#ff4500"> Error: Maximale Anzahl von Personen muss mindestens 1 sein!';
@@ -146,7 +150,7 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 		} finally {
 			$ʟ_ifA = ob_get_clean();
 		}
-		if (isset($error['max'])) /* line 45 */ {
+		if (isset($error['max'])) /* line 49 */ {
 			echo $ʟ_ifA;
 		}
 		echo '
@@ -162,19 +166,19 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
     <h2>Festival Liste:</h2>
 
 ';
-		foreach ($old as $dol) /* line 58 */ {
+		foreach ($old as $dol) /* line 62 */ {
 			echo '        <span>
             Name: ';
-			echo LR\Filters::escapeHtmlText($dol['name']) /* line 60 */;
+			echo LR\Filters::escapeHtmlText($dol['name']) /* line 64 */;
 			echo ' <br>
             Datum: ';
-			echo LR\Filters::escapeHtmlText($dol['date']) /* line 61 */;
+			echo LR\Filters::escapeHtmlText($dol['date']) /* line 65 */;
 			echo ' <br>
             Beschreibung: ';
-			echo LR\Filters::escapeHtmlText($dol['description']) /* line 62 */;
+			echo LR\Filters::escapeHtmlText($dol['description']) /* line 66 */;
 			echo ' <br>
             Maximale Anzahl: ';
-			echo LR\Filters::escapeHtmlText($dol['max']) /* line 63 */;
+			echo LR\Filters::escapeHtmlText($dol['max']) /* line 67 */;
 			echo ' <br><br>
         </span>
 ';
@@ -184,23 +188,23 @@ final class Template85dcc93bd2 extends Latte\Runtime\Template
 		echo '    <h2> Anmeldung</h2>
 
 ';
-		foreach ($old as $registration) /* line 68 */ {
+		foreach ($old as $registration) /* line 72 */ {
 			echo '        <h4> ';
-			echo LR\Filters::escapeHtmlText($registration['name']) /* line 69 */;
+			echo LR\Filters::escapeHtmlText($registration['name']) /* line 73 */;
 			echo '</h4>
 
 ';
-			if ($registration['isMax'] < $registration['max']) /* line 71 */ {
+			if ($registration['isMax'] < $registration['max']) /* line 75 */ {
 				echo '            <form action="/index.php" method="POST">
                 <input type="submit" name="binDabei_';
-				echo LR\Filters::escapeHtmlAttr($registration['id']) /* line 73 */;
+				echo LR\Filters::escapeHtmlAttr($registration['id']) /* line 77 */;
 				echo '" value="Bin Dabei!"></form>
 ';
 			}
 			echo '        <span> Der Zeit angemeldet: ';
-			echo LR\Filters::escapeHtmlText($registration['isMax']) /* line 75 */;
+			echo LR\Filters::escapeHtmlText($registration['isMax']) /* line 79 */;
 			echo ' / ';
-			echo LR\Filters::escapeHtmlText($registration['max']) /* line 75 */;
+			echo LR\Filters::escapeHtmlText($registration['max']) /* line 79 */;
 			echo '<br><br></span>
 ';
 

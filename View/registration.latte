@@ -1,5 +1,5 @@
 {block content}
-    <form action="/user.php" method="post">
+    <form action="/index.php?page=registrierung" method="post">
         <div>
             <label> Name:
                 <input type="text" name="userName"
@@ -24,9 +24,12 @@
             </label>
         </div>
         <div>
-            <label>Registrierung:
+            <label>
                 <input type="submit" name="register" value="Registrierung">
             </label>
         </div>
     </form>
+    <a href="http://localhost:8000/index.php?page=login">
+        <button> Log In</button>
+    </a>
 {/block}
