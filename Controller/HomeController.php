@@ -3,6 +3,11 @@
 namespace Controller;
 
 use Latte\Engine;
+use Model\EventEntityManager;
+use Model\EventRepository;
+
+require_once __DIR__ . '/../Model/EventEntityManager.php';
+require_once __DIR__ . '/../Model/EventRepository.php';
 
 class HomeController
 {
@@ -18,18 +23,15 @@ class HomeController
 
     public function controller(): void
     {
-
-        $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/events.json';
-        if (!file_exists($filename)) {
-            file_put_contents($filename, json_encode([]));
-        }
+        $eventRepository = new EventRepository();
+        $allEvents = $eventRepository->findAll();
 
         $error = [];
         $newEvent = [];
 
         if (isset($_POST['submit'])) {
             $newEvent = [
-                "id" => $_POST['id'] = uniqid('F', false),
+                "eventId" => $_POST['eventId'] = uniqid('F', false),
                 "name" => $_POST['name'],
                 "date" => $_POST['date'],
                 "description" => $_POST['description'],
@@ -50,32 +52,28 @@ class HomeController
                 $error['max'] = "";
             }
             if (empty($error)) {
-                $file = file_get_contents("json/events.json");
-                $oldEvent = json_decode($file, true, 521);
-                $oldEvent[] = $newEvent;
-                $encodedData = json_encode($oldEvent, JSON_PRETTY_PRINT);
-                file_put_contents("json/events.json", $encodedData);
+                $eventEntityManager = new EventEntityManager();
+                $eventEntityManager->saveAll($newEvent, $allEvents);
+                header("location: http://localhost:8000/index.php");
             }
         }
 
-        $old = json_decode(file_get_contents("json/events.json"), true);
+        foreach ($allEvents as $registration) {
 
-
-        foreach ($old as $registration) {
-
-            $bName = 'binDabei' . '_' . $registration['id'];
+            $bName = 'binDabei' . '_' . $registration['eventId'];
 
             if (isset($_POST[$bName])) {
-                $addition = json_decode(file_get_contents("json/events.json"), true);
-                $targetId = $registration['id'];
+                $addition = $allEvents;
+                $targetId = $registration['eventId'];
                 $newValue = ++$registration['isMax'];
 
                 foreach ($addition as $key => $participant) {
-                    if ($participant['id'] === $targetId) {
+                    if ($participant['eventId'] === $targetId) {
                         $addition[$key]['isMax'] = $newValue;
                     }
                 }
-                file_put_contents("json/events.json", json_encode($addition, JSON_PRETTY_PRINT));
+                $eventEntityManager = new EventEntityManager();
+                $eventEntityManager->add($addition);
                 header("Location: /index.php");
             }
         }
@@ -86,8 +84,8 @@ class HomeController
         $max = $_POST['max'] ?? NULL;
         $userName = $_SESSION["username"] ?? NULL;
 
-        $this->latte->render('/home/fabianmaiwald/PhpstormProjects/EventPage/View/home.latte', [
-            'old' => $old,
+        $this->latte->render(__DIR__ . '/../View/home.latte', [
+            'allEvents' => $allEvents,
             'error' => $error,
             'newEvent' => $newEvent,
             'name' => $name,
@@ -98,3 +96,5 @@ class HomeController
         ]);
     }
 }
+
+/* json encode //json decode aus den controllern ausschließen */

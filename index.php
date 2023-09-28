@@ -17,22 +17,27 @@ error_reporting(E_ALL);
 
 session_start();
 
-require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/HomeController.php';
-require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LoginController.php';
-require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/RegistrationController.php';
-require_once '/home/fabianmaiwald/PhpstormProjects/EventPage/Controller/LogoutController.php';
+require_once __DIR__ . '/../EventPage/Controller/HomeController.php';
+require_once __DIR__ . '/../EventPage/Controller/LoginController.php';
+require_once __DIR__ . '/../EventPage/Controller/RegistrationController.php';
+require_once __DIR__ . '/../EventPage/Controller/LogoutController.php';
+require_once __DIR__ . '/../EventPage/Model/UserRepository.php';
 
-if ($_SERVER['REQUEST_URI'] === '/index.php?page=login') {
-    $loginController = new LoginController();
-    $loginController->login();
-} elseif ($_SERVER['REQUEST_URI'] === '/index.php?page=registrierung') {
-    $registrationController = new RegistrationController();
-    $registrationController->register();
-} elseif ($_SERVER['REQUEST_URI'] === '/index.php?page=logout') {
-    $logoutController = new LogoutController();
-    $logoutController->logout();
-} else {
-    $homeController = new HomeController();
-    $homeController->controller();
+
+switch ($_SERVER['REQUEST_URI']) {
+    case '/index.php?page=login':
+        $loginController = new LoginController();
+        $loginController->login();
+        break;
+    case '/index.php?page=registrierung':
+        $registrationController = new RegistrationController();
+        $registrationController->register();
+        break;
+    case '/index.php?page=logout':
+        $logoutController = new LogoutController();
+        $logoutController->logout();
+        break;
+    default :
+        $homeController = new HomeController();
+        $homeController->controller();
 }
-

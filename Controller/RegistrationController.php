@@ -3,6 +3,11 @@
 namespace Controller;
 
 use Latte\Engine;
+use Model\UserEntityManager;
+use Model\UserRepository;
+
+require_once __DIR__ . '/../Model/UserEntityManager.php';
+
 
 class RegistrationController
 {
@@ -11,61 +16,57 @@ class RegistrationController
 
     public function register(): void
     {
-        $this->latte = new \Latte\Engine;
+        $this->latte = new Engine;
         $this->latte->setTempDirectory(__DIR__ . '/temp');
         $this->latte->setautoRefresh();
 
-        $filename = '/home/fabianmaiwald/PhpstormProjects/EventPage/json/users.json';
-
-        if (!file_exists($filename)) {
-            file_put_contents($filename, json_encode([]));
-        }
         $error = [];
-        $newUser = [];
-        $userName = $email = "";
-        $liste = array_column(json_decode(file_get_contents("json/users.json"), true), 'email', 'userName');
+        $email = '';
 
-        if (isset($_POST['register'])) {
-            foreach ($liste as $list) {
-                if ($list === $_POST['email']) {
-                    header("location: http://localhost:8000/login.php", true, 0);
-                    exit;
-                }
+        $userName = $_POST['email'] ?? '';
+        $userRepository = new UserRepository();
+        $existingUser = $userRepository->findByUsername($userName);
+
+
+        if ($existingUser === null && isset($_POST['register'])) {
+            $newUser = [
+                "userId" => $_POST['userId'] = uniqid('F', false),
+                "userName" => $_POST['userName'],
+                "email" => $_POST['email'],
+                "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            ];
+
+
+
+            if (strlen($_POST['userName']) <= 3) {
+                $error['userName'] = "";
             }
-            if (isset($_POST['register'])) {
-                $newUser = [
-                    "userName" => $_POST['userName'],
-                    "email" => $_POST['email'],
-                    "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
-                ];
+            if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $error['email'] = "";
+            }
+            if (strlen($_POST['password']) < 3) {
+                $error['password'] = "";
+            }
 
-                $email = $_POST['email'];
-
-                if (strlen($_POST['userName']) <= 3) {
-                    $error['userName'] = "";
-                }
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $error['email'] = "";
-                }
-                if (strlen($_POST['password']) < 3) {
-                    $error['password'] = "";
-                }
-
-                if (empty($error)) {
-                    $oldUser = json_decode(file_get_contents("json/users.json"), true);
-                    $oldUser[] = $newUser;
-                    file_put_contents("json/users.json", json_encode($oldUser, JSON_PRETTY_PRINT));
-                }
+            if (empty($error)) {
+                $userEntityManager = new UserEntityManager();
+                $userEntityManager->save($newUser);
+                $success = true;
             }
         }
+
+
         if (isset($_POST['register'])) {
             $userName = $_POST['userName'];
             $email = $_POST['email'];
         }
-        $this->latte->render('/home/fabianmaiwald/PhpstormProjects/EventPage/View/registration.latte', [
+        $this->latte->render(__DIR__ . '/../View/registration.latte', [
             'error' => $error,
             'userName' => $userName,
             'email' => $email,
+            'success' => $success ?? false,
         ]);
     }
 }
+
+/* json encode //json decode aus den controllern ausschließen */

@@ -8,7 +8,7 @@ class LogoutController
     {
         if (isset($_POST['logout'])) {
             unset($_SESSION["username"]);
-            header("location: /index.php?page=login");
+            header("location: /index.php");
         }
     }
 }

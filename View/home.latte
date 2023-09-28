@@ -59,22 +59,22 @@
 
     <h2>Festival Liste:</h2>
 
-    {foreach $old as $dol}
+    {foreach $allEvents as $old}
         <span>
-            Name: {$dol['name']} <br>
-            Datum: {$dol['date']} <br>
-            Beschreibung: {$dol ['description']} <br>
-            Maximale Anzahl: {$dol['max']} <br><br>
+            Name: {$old['name']} <br>
+            Datum: {$old['date']} <br>
+            Beschreibung: {$old ['description']} <br>
+            Maximale Anzahl: {$old['max']} <br><br>
         </span>
     {/foreach}
     <h2> Anmeldung</h2>
 
-    {foreach $old as $registration}
+    {foreach $allEvents as $registration}
         <h4> {$registration['name']}</h4>
 
         {if $registration['isMax'] < $registration['max']}
             <form action="/index.php" method="POST">
-                <input type="submit" name="binDabei_{$registration['id']}" value="Bin Dabei!"></form>
+                <input type="submit" name="binDabei_{$registration['eventId']}" value="Bin Dabei!"></form>
         {/if}
         <span> Der Zeit angemeldet: {$registration['isMax']} / {$registration['max']}<br><br></span>
     {/foreach}
