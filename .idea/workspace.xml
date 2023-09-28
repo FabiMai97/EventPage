@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db6773ef-f23b-407c-acab-f9ce8505ba59" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_23,_13_26_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_09_23__13_26__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/LogoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/LogoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/EventEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventEntityManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/UserEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserEntityManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/home.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/home.latte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/registration.latte" beforeDir="false" afterPath="$PROJECT_DIR$/View/registration.latte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/events.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/users.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/json/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +161,7 @@
       <workItem from="1695791848133" duration="2991000" />
       <workItem from="1695795610176" duration="6906000" />
       <workItem from="1695812607254" duration="8851000" />
-      <workItem from="1695879519344" duration="22294000" />
+      <workItem from="1695879519344" duration="24457000" />
     </task>
     <servers />
   </component>

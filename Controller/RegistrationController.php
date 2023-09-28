@@ -25,7 +25,7 @@ class RegistrationController
 
         $userName = $_POST['email'] ?? '';
         $userRepository = new UserRepository();
-        $existingUser = $userRepository->findByUsername($userName);
+        $existingUser = $userRepository->findByEmail($userName);
 
 
         if ($existingUser === null && isset($_POST['register'])) {

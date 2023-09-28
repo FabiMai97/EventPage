@@ -4,34 +4,31 @@ namespace Model;
 
 class UserRepository
 {
-    public function findByUsername(string $userName): ?array
+    private string $filename = __DIR__ . '/../json/users.json';
+
+    public function __construct()
     {
-
-        $filename = __DIR__ . '/../json/users.json';
-        if (!file_exists($filename)) {
-            file_put_contents($filename, json_encode([], JSON_THROW_ON_ERROR));
+        if (!file_exists($this->filename)) {
+            file_put_contents($this->filename, json_encode([], JSON_THROW_ON_ERROR));
         }
+    }
 
-
-        $allUser = json_decode(file_get_contents("json/users.json"), true, 512, JSON_THROW_ON_ERROR);
+    public function findByEmail(string $userName): ?array
+    {
+        $allUser = json_decode(file_get_contents($this->filename), true, 512, JSON_THROW_ON_ERROR);
 
         foreach ($allUser as $targetUser) {
             if ($targetUser["email"] === $userName) {
                 return $targetUser;
             }
         }
+
         return null;
     }
 
-    /*public function findByMail($userMail): ?array
+    public function findAllUser(): array
     {
-        $allMail = json_decode(file_get_contents("json/users.json"), true, 512, JSON_THROW_ON_ERROR);
+        return json_decode(file_get_contents($this->filename), true, 512, JSON_THROW_ON_ERROR);
+    }
 
-        foreach ($allMail as $targetMail) {
-            if ($targetMail['email'] === $userMail) {
-                return $targetMail;
-            }
-        }
-        return null;
-    }*/
 }

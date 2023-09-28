@@ -21,7 +21,7 @@ class LoginController
 
             $userName = $_POST['loginMail'];
             $userRepository = new UserRepository();
-            $targetUser = $userRepository->findByUsername($userName);
+            $targetUser = $userRepository->findByEmail($userName);
 
             if (($targetUser !== null) && (password_verify($_POST['loginPassword'], $targetUser['password'])) && ($_POST['loginMail']) === $targetUser['email']) {
                 $_SESSION["username"] = $targetUser['userName'];

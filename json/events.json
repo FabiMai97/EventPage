@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "eventId": "F65041050f27c0",
+    "name": "FooFooBarBar",
+    "date": "2023-09-21",
+    "description": "so soll das aussehen",
+    "max": "20",
+    "isMax": 11
+  },
+  {
+    "eventId": "F6515259d31ad6",
+    "name": "Defqon",
+    "date": "9999-09-09",
+    "description": "das sieht besser aus",
+    "max": "99",
+    "isMax": 52
+  },
+  {
+    "eventId": "F6515345eb5221",
+    "name": "SanHejmo",
+    "date": "2023-10-04",
+    "description": "ist cool da zu sein",
+    "max": "10",
+    "isMax": 0
+  }
+]

@@ -1,1 +1,62 @@
-[]
+[
+    {
+        "userId": "F65040d9141abb",
+        "userName": "fabi",
+        "email": "fabi@fabi.de",
+        "password": "$2y$10$1HFfHRBIORSsLerHKpK2veMe0uKrX0xm2XszOQKvRhZX5whGw4ycG"
+    },
+    {
+        "userId": "F6513f2713d4bb",
+        "userName": "timi",
+        "email": "timi@timi.de",
+        "password": "$2y$10$5kviFYSMwUP2aad5BVMnAucy2GgmV0Klr61Jz6C9Uvgk23gQieYyO"
+    },
+    {
+        "userId": "F6513f6bbd230e",
+        "userName": "flip",
+        "email": "flip@flip.de",
+        "password": "$2y$10$lDIqVCsR16ayMrrItrPFoeFXhHULizJttdJjoaBttNMosho6vAMJu"
+    },
+    {
+        "userId": "F65142661733ab",
+        "userName": "maik",
+        "email": "maik@maik.de",
+        "password": "$2y$10$abkyEmcEoUxCwoboqN.3HeKUlzJ4rrcdlex1TyBTE1yvRgzYJKz1W"
+    },
+    {
+        "userId": "F65151794957a8",
+        "userName": "benn",
+        "email": "benn@benn.de",
+        "password": "$2y$10$XAFtv7RnF\/Qdw4\/6r58B1O85SPem\/4QcElH7oArbwxwPmjZvuyzQW"
+    },
+    {
+        "userId": "F65153b125bf9b",
+        "userName": "nico",
+        "email": "nico@nico.de",
+        "password": "$2y$10$i0YcGHyCIubHXEgFeYEjnu1k6RV8Z4yzwRPxQYYncM0AK33QX3Q5O"
+    },
+    {
+        "userId": "F65153c69c5597",
+        "userName": "jimi",
+        "email": "jimi@jimi.de",
+        "password": "$2y$10$myKB.bGXqjR8Mpficz1pzuVjQYJDoYlD7w669owAw6mHQyRjK9tJC"
+    },
+    {
+        "userId": "F651573d9e3563",
+        "userName": "kimi",
+        "email": "kimi@kimi.de",
+        "password": "$2y$10$MfmTx0cDKD49.pZYlZ.Q3ezZGCSW1hlb4CWxkk0w7dTc1R8Jgmo26"
+    },
+    {
+        "userId": "F65157500c72e1",
+        "userName": "fibi",
+        "email": "fibi@fibi.de",
+        "password": "$2y$10$x3SVSrDyabEGMeWRNYBNmubBRiUSjBB2dT8BJWpiaY4kJcc4ohKma"
+    },
+    {
+        "userId": "F651578e2c3471",
+        "userName": "Philipp",
+        "email": "phil@gmail.com",
+        "password": "$2y$10$qq.BSjcsSZ4spAwvdkSNneDcbkf3MB7tIH.HFbf9mS7GLJyNOSC4C"
+    }
+]
