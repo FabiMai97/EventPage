@@ -69,4 +69,3 @@ class RegistrationController
     }
 }
 
-/* json encode //json decode aus den controllern ausschließen */

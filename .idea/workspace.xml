@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="db6773ef-f23b-407c-acab-f9ce8505ba59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/UserEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserEntityManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/EventValidierung.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/EventValidierung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/EventEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventEntityManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/events.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/json/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/users.json" afterDir="false" />
@@ -41,6 +45,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -162,6 +167,7 @@
       <workItem from="1695795610176" duration="6906000" />
       <workItem from="1695812607254" duration="8851000" />
       <workItem from="1695879519344" duration="24457000" />
+      <workItem from="1695986926003" duration="3759000" />
     </task>
     <servers />
   </component>

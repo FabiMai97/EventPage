@@ -58,5 +58,11 @@
         "userName": "Philipp",
         "email": "phil@gmail.com",
         "password": "$2y$10$qq.BSjcsSZ4spAwvdkSNneDcbkf3MB7tIH.HFbf9mS7GLJyNOSC4C"
+    },
+    {
+        "userId": "F6516b87dbc596",
+        "userName": "ditto",
+        "email": "ditto@ditto.de",
+        "password": "$2y$10$OeqVCQ3VkqQ2s5PBmmNc0uIsrcoZmD7jmZ\/yvABUMPNOxPp43ETKS"
     }
 ]

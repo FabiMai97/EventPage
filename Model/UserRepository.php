@@ -28,7 +28,8 @@ class UserRepository
 
     public function findAllUser(): array
     {
-        return json_decode(file_get_contents($this->filename), true, 512, JSON_THROW_ON_ERROR);
+        $allUser = json_decode(file_get_contents($this->filename), true, 512, JSON_THROW_ON_ERROR);
+        return $allUser;
     }
 
 }

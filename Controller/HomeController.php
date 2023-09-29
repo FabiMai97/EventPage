@@ -3,11 +3,14 @@
 namespace Controller;
 
 use Latte\Engine;
+
+use Core\EventValidierung;
 use Model\EventEntityManager;
 use Model\EventRepository;
 
 require_once __DIR__ . '/../Model/EventEntityManager.php';
 require_once __DIR__ . '/../Model/EventRepository.php';
+require_once __DIR__ . '/../Core/EventValidierung.php';
 
 class HomeController
 {
@@ -39,21 +42,14 @@ class HomeController
                 "isMax" => $_POST['isMax'] = 0,
             ];
 
-            if (strlen($_POST['name']) <= 3) {
-                $error['name'] = "";
-            }
-            if (strtotime($_POST['date']) < time()) {
-                $error['date'] = "";
-            }
-            if (strlen($_POST['description']) <= 5) {
-                $error['description'] = "";
-            }
-            if (!is_numeric($_POST['max']) || $_POST['max'] < 0) {
-                $error['max'] = "";
-            }
+            $validierung = new EventValidierung();
+            $error = $validierung->setEventError($newEvent);
+
             if (empty($error)) {
+                $allEvents[] = $newEvent;
                 $eventEntityManager = new EventEntityManager();
-                $eventEntityManager->saveAll($newEvent, $allEvents);
+                $eventEntityManager->saveAll($allEvents);
+
                 header("location: http://localhost:8000/index.php");
             }
         }
@@ -73,7 +69,7 @@ class HomeController
                     }
                 }
                 $eventEntityManager = new EventEntityManager();
-                $eventEntityManager->add($addition);
+                $eventEntityManager->saveAll($addition);
                 header("Location: /index.php");
             }
         }
@@ -96,5 +92,3 @@ class HomeController
         ]);
     }
 }
-
-/* json encode //json decode aus den controllern ausschließen */
