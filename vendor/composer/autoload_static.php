@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitdb5b0c74c36441d3edece31565c49290
 {
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Latte\\Attributes\\TemplateFilter' => __DIR__ . '/..' . '/latte/latte/src/Latte/attributes.php',
@@ -237,6 +251,8 @@ class ComposerStaticInitdb5b0c74c36441d3edece31565c49290
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdb5b0c74c36441d3edece31565c49290::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdb5b0c74c36441d3edece31565c49290::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitdb5b0c74c36441d3edece31565c49290::$classMap;
 
         }, null, ClassLoader::class);

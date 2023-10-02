@@ -5,15 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db6773ef-f23b-407c-acab-f9ce8505ba59" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/EventValidierung.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/EventValidierung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/EventEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventEntityManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EventRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/json/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LogoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LogoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/EventValidierung.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/EventValidierung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/EventEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventEntityManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserEntityManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserEntityManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/json/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/events.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/json/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Position.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Position.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TagLexer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TagLexer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateLexer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateLexer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParser.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParserHtml.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/TemplateParserHtml.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Token.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Compiler/Token.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Engine.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/Engine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/PositionAwareException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Latte/PositionAwareException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/latte/latte/src/Tools/Linter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/latte/latte/src/Tools/Linter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/src/StaticClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/src/StaticClass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/Arrays.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/Arrays.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/DateTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/DateTime.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/FileSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/FileSystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/Finder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/Finder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/Strings.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/nette/utils/src/Utils/Strings.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +54,9 @@
   </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -95,7 +124,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.PHP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -106,6 +135,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/View" />
       <recent name="$PROJECT_DIR$/json" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -167,7 +198,8 @@
       <workItem from="1695795610176" duration="6906000" />
       <workItem from="1695812607254" duration="8851000" />
       <workItem from="1695879519344" duration="24457000" />
-      <workItem from="1695986926003" duration="3759000" />
+      <workItem from="1695986926003" duration="7007000" />
+      <workItem from="1696224117901" duration="11661000" />
     </task>
     <servers />
   </component>
@@ -237,19 +269,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/Controller/LoginController.php</url>
-          <line>11</line>
-          <properties>
-            <option name="className" value="\Controller\LoginController" />
-            <option name="methodName" value="login" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
         <watch expression="$newData" />

@@ -66,21 +66,9 @@
         "password": "$2y$10$OeqVCQ3VkqQ2s5PBmmNc0uIsrcoZmD7jmZ\/yvABUMPNOxPp43ETKS"
     },
     {
-        "userId": "F651a6b381616e",
+        "userId": "F651a6b26947de",
         "userName": "fips",
         "email": "fips@fips.de",
-        "password": "$2y$10$dzmZq427cvJBSON5nj28eOkuRGCrB3RBJt9sMFH0XXkzKj5B9E45S"
-    },
-    {
-        "userId": "F651a6b54a2ec7",
-        "userName": "juli",
-        "email": "juli@juli.de",
-        "password": "$2y$10$4JaRfIRvEr8FBlcUGxtTK.uDGE3hvdXvLqresjTvK8iB6GEaKp3Sq"
-    },
-    {
-        "userId": "F651a78e4a4c8c",
-        "userName": "Miri",
-        "email": "miri@miri.de",
-        "password": "$2y$10$.IzIqlnOaQtJW1vV0lnutuDFh7vXWx\/3wkryCaJLnf9rt5SLD7OmW"
+        "password": "$2y$10$bSo7obbEPwGzaGviJtHfcu4\/YHozE2GvTNOXJikdS.iI2mTmf0zD."
     }
 ]

@@ -1,16 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Controller;
+namespace App\Controller;
 
 use Latte\Engine;
 
-use Core\EventValidierung;
-use Model\EventEntityManager;
-use Model\EventRepository;
-
-require_once __DIR__ . '/../Model/EventEntityManager.php';
-require_once __DIR__ . '/../Model/EventRepository.php';
-require_once __DIR__ . '/../Core/EventValidierung.php';
+use App\Core\EventValidierung;
+use App\Model\EventEntityManager;
+use App\Model\EventRepository;
 
 class HomeController
 {
@@ -80,7 +76,7 @@ class HomeController
         $max = $_POST['max'] ?? NULL;
         $userName = $_SESSION["username"] ?? NULL;
 
-        $this->latte->render(__DIR__ . '/../src/View/home.latte', [
+        $this->latte->render(__DIR__ . '/../View/home.latte', [
             'allEvents' => $allEvents,
             'error' => $error,
             'newEvent' => $newEvent,

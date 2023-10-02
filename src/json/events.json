@@ -3,24 +3,32 @@
         "eventId": "F65041050f27c0",
         "name": "FooFooBarBar",
         "date": "2023-09-21",
-        "description": "so soll das aussehen",
-        "max": "20",
-        "isMax": 20
+        "description": "Langweilig",
+        "max": "200",
+        "isMax": 0
     },
     {
         "eventId": "F6515259d31ad6",
         "name": "Defqon",
         "date": "9999-09-09",
-        "description": "das sieht besser aus",
+        "description": "soll ganz cool sein",
         "max": "99",
-        "isMax": 85
+        "isMax": 0
     },
     {
         "eventId": "F6515345eb5221",
         "name": "SanHejmo",
         "date": "2023-10-04",
         "description": "ist cool da zu sein",
-        "max": "10",
-        "isMax": 5
+        "max": "100",
+        "isMax": 0
+    },
+    {
+        "eventId": "F651a7ace65a85",
+        "name": "Parooka",
+        "date": "2023-10-26",
+        "description": "Macht spa\u00df dort zu arbeiten!!!",
+        "max": "40000",
+        "isMax": 0
     }
 ]

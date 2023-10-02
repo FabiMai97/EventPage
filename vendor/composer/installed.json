@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "latte/latte",
-            "version": "v3.0.8",
-            "version_normalized": "3.0.8.0",
+            "version": "v3.0.9",
+            "version_normalized": "3.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/latte.git",
-                "reference": "57dcce388efe1a074993bca629741e42ed2bd41f"
+                "reference": "e24c4123659d0177bf28561827e117fe7453c355"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/latte/zipball/57dcce388efe1a074993bca629741e42ed2bd41f",
-                "reference": "57dcce388efe1a074993bca629741e42ed2bd41f",
+                "url": "https://api.github.com/repos/nette/latte/zipball/e24c4123659d0177bf28561827e117fe7453c355",
+                "reference": "e24c4123659d0177bf28561827e117fe7453c355",
                 "shasum": ""
             },
             "require": {
@@ -38,7 +38,7 @@
                 "nette/php-generator": "to use tag {templatePrint}",
                 "nette/utils": "to use filter |webalize"
             },
-            "time": "2023-08-27T00:32:02+00:00",
+            "time": "2023-09-08T10:05:30+00:00",
             "bin": [
                 "bin/latte-lint"
             ],
@@ -84,23 +84,23 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/latte/issues",
-                "source": "https://github.com/nette/latte/tree/v3.0.8"
+                "source": "https://github.com/nette/latte/tree/v3.0.9"
             },
             "install-path": "../latte/latte"
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.1",
-            "version_normalized": "4.0.1.0",
+            "version": "v4.0.2",
+            "version_normalized": "4.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "9124157137da01b1f5a5a22d6486cb975f26db7e"
+                "reference": "cead6637226456b35e1175cc53797dd585d85545"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/9124157137da01b1f5a5a22d6486cb975f26db7e",
-                "reference": "9124157137da01b1f5a5a22d6486cb975f26db7e",
+                "url": "https://api.github.com/repos/nette/utils/zipball/cead6637226456b35e1175cc53797dd585d85545",
+                "reference": "cead6637226456b35e1175cc53797dd585d85545",
                 "shasum": ""
             },
             "require": {
@@ -122,10 +122,9 @@
                 "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
                 "ext-json": "to use Nette\\Utils\\Json",
                 "ext-mbstring": "to use Strings::lower() etc...",
-                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()",
-                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()"
             },
-            "time": "2023-07-30T15:42:21+00:00",
+            "time": "2023-09-19T11:58:07+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -174,7 +173,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.1"
+                "source": "https://github.com/nette/utils/tree/v4.0.2"
             },
             "install-path": "../nette/utils"
         }

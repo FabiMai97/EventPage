@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace App\Model;
 
 class UserRepository
 {
@@ -22,7 +22,6 @@ class UserRepository
                 return $targetUser;
             }
         }
-
         return null;
     }
 

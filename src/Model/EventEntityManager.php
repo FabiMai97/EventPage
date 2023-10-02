@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace App\Model;
 
 class EventEntityManager
 {
@@ -10,6 +10,4 @@ class EventEntityManager
     {
         file_put_contents($this->filename, json_encode($events, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
     }
-
-
 }

@@ -1,25 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace Controller;
+namespace App\Controller;
 
 use Latte\Engine;
-use Model\UserEntityManager;
-use Model\UserRepository;
 
-require_once __DIR__ . '/../Model/UserEntityManager.php';
-
+use App\Model\UserEntityManager;
+use App\Model\UserRepository;
 
 class RegistrationController
 {
 
     public Engine $latte;
 
-    public function register(): void
+    public function __construct()
     {
-        $this->latte = new Engine;
+        $this->latte = new Engine();
         $this->latte->setTempDirectory(__DIR__ . '/temp');
         $this->latte->setautoRefresh();
+    }
 
+    public function register(): void
+    {
         $error = [];
         $email = '';
 
@@ -35,7 +36,6 @@ class RegistrationController
                 "email" => $_POST['email'],
                 "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
             ];
-
 
 
             if (strlen($_POST['userName']) <= 3) {
@@ -60,7 +60,7 @@ class RegistrationController
             $userName = $_POST['userName'];
             $email = $_POST['email'];
         }
-        $this->latte->render(__DIR__ . '/../src/View/registration.latte', [
+        $this->latte->render(__DIR__ . '/../View/registration.latte', [
             'error' => $error,
             'userName' => $userName,
             'email' => $email,

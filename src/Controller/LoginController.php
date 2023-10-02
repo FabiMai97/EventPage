@@ -1,20 +1,23 @@
 <?php declare(strict_types=1);
 
-namespace Controller;
+namespace App\Controller;
 
 use Latte\Engine;
-use Model\UserRepository;
+
+use App\Model\UserRepository;
 
 class LoginController
 {
     public Engine $latte;
 
-    public function login(): void
+    public function __construct()
     {
-        $this->latte = new Engine;
+        $this->latte = new Engine();
         $this->latte->setTempDirectory(__DIR__ . '/temp');
         $this->latte->setautoRefresh();
-
+    }
+    public function login(): void
+    {
         $error = "";
 
         if (isset($_POST['loginSubmit'])) {
@@ -32,7 +35,7 @@ class LoginController
 
         $email = $_POST['loginMail'] ?? NULL;
 
-        $this->latte->render(__DIR__ . '/../src/View/login.latte', [
+        $this->latte->render(__DIR__ . '/../View/login.latte', [
             'error' => $error,
             'email' => $email,
         ]);

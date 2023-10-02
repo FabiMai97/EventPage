@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-use Controller\HomeController;
-use Controller\LoginController;
-use Controller\LogoutController;
-use Controller\RegistrationController;
+use App\Controller\HomeController;
+use App\Controller\LoginController;
+use App\Controller\LogoutController;
+use App\Controller\RegistrationController;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -16,13 +16,6 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 session_start();
-
-require_once __DIR__ . '/../EventPage/Controller/HomeController.php';
-require_once __DIR__ . '/../EventPage/Controller/LoginController.php';
-require_once __DIR__ . '/../EventPage/Controller/RegistrationController.php';
-require_once __DIR__ . '/../EventPage/Controller/LogoutController.php';
-require_once __DIR__ . '/../EventPage/Model/UserRepository.php';
-
 
 switch ($_SERVER['REQUEST_URI']) {
     case '/index.php?page=login':
