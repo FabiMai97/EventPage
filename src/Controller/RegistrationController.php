@@ -60,7 +60,7 @@ class RegistrationController
             $userName = $_POST['userName'];
             $email = $_POST['email'];
         }
-        $this->latte->render(__DIR__ . '/../View/registration.latte', [
+        $this->latte->render(__DIR__ . '/../src/View/registration.latte', [
             'error' => $error,
             'userName' => $userName,
             'email' => $email,

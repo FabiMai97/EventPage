@@ -80,7 +80,7 @@ class HomeController
         $max = $_POST['max'] ?? NULL;
         $userName = $_SESSION["username"] ?? NULL;
 
-        $this->latte->render(__DIR__ . '/../View/home.latte', [
+        $this->latte->render(__DIR__ . '/../src/View/home.latte', [
             'allEvents' => $allEvents,
             'error' => $error,
             'newEvent' => $newEvent,

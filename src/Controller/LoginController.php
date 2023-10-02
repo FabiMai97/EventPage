@@ -32,7 +32,7 @@ class LoginController
 
         $email = $_POST['loginMail'] ?? NULL;
 
-        $this->latte->render(__DIR__ . '/../View/login.latte', [
+        $this->latte->render(__DIR__ . '/../src/View/login.latte', [
             'error' => $error,
             'email' => $email,
         ]);
